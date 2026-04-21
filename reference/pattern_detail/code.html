@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Motion Architect - Pattern Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#2c2c2c",
+                        "on-error-container": "#ff9993",
+                        "on-secondary-container": "#bebfc5",
+                        "on-primary-fixed-variant": "#0057bd",
+                        "secondary-fixed": "#e2e2e9",
+                        "secondary-fixed-dim": "#d4d4db",
+                        "outline-variant": "#484848",
+                        "outline": "#767575",
+                        "error": "#ee7d77",
+                        "error-container": "#7f2927",
+                        "surface-container-low": "#131313",
+                        "on-background": "#e7e5e4",
+                        "primary-dim": "#98b8ff",
+                        "inverse-primary": "#005bc4",
+                        "tertiary-fixed": "#d3ceef",
+                        "inverse-surface": "#fcf8f8",
+                        "on-tertiary-container": "#47445f",
+                        "primary-container": "#004395",
+                        "surface-container": "#191a1a",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#bdd0ff",
+                        "tertiary-dim": "#c5c0e0",
+                        "tertiary": "#e1dcfd",
+                        "surface-container-lowest": "#000000",
+                        "secondary": "#9d9da4",
+                        "on-tertiary-fixed-variant": "#504e69",
+                        "on-tertiary": "#504d68",
+                        "surface-dim": "#0e0e0e",
+                        "tertiary-fixed-dim": "#c5c0e0",
+                        "on-surface": "#e7e5e4",
+                        "on-secondary-fixed": "#3e3f45",
+                        "primary-fixed-dim": "#c3d4ff",
+                        "on-primary-fixed": "#003c86",
+                        "secondary-dim": "#9d9da4",
+                        "surface-tint": "#adc6ff",
+                        "error-dim": "#bb5551",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "secondary-container": "#3a3b41",
+                        "tertiary-container": "#d3ceef",
+                        "surface-container-highest": "#252626",
+                        "inverse-on-surface": "#565554",
+                        "surface-variant": "#252626",
+                        "surface-container-high": "#1f2020",
+                        "on-error": "#490106",
+                        "on-secondary": "#1e2025",
+                        "on-tertiary-fixed": "#34314b",
+                        "on-primary": "#003d88",
+                        "surface": "#0e0e0e",
+                        "background": "#0e0e0e",
+                        "on-surface-variant": "#acabaa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #e7e5e4;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary/30">
+<header class="bg-[#0e0e0e]/70 backdrop-blur-xl fixed top-0 w-full z-50">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="architecture">architecture</span>
+<span class="font-manrope tracking-wider uppercase font-bold text-lg font-black tracking-tighter text-[#adc6ff]">Motion Architect</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<a class="font-manrope tracking-wider uppercase font-bold text-sm text-[#e7e5e4]/60 hover:text-[#adc6ff] transition-colors" href="#">Documentation</a>
+<a class="font-manrope tracking-wider uppercase font-bold text-sm text-[#adc6ff] hover:text-[#adc6ff] transition-colors" href="#">Patterns</a>
+<a class="font-manrope tracking-wider uppercase font-bold text-sm text-[#e7e5e4]/60 hover:text-[#adc6ff] transition-colors" href="#">Showcase</a>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest border border-outline-variant/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional male software engineer in a modern workspace with soft ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLH9X6o0DUhb-j-xT1G5_DBct9banVkdVAWItheo_c2Bss81wnYdtTAzedz2UW3S2z9-B8vPoTMXN_FRAFM0U0VCVeWEfs0yMkLXg06jCiNtQVMK4paXj1m-GaFYg-l9irGivcr_Ail7qKGuLqcaFjiGGBTT0xmgH0YJqKZlWKtA2FcJyXeFOA2xWNT6z5A5kVMH_5hmtk1baZlo2y6nIuBcDeRquY5C-ncgWLFzgXHSIBlwdhkrkCp3Y6c_eYK2HDpjoARQmTlxyS"/>
+</div>
+</div>
+</div>
+<div class="bg-[#131313] h-[1px] w-full"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="space-y-2">
+<nav class="flex items-center gap-2 text-on-surface-variant text-xs font-medium tracking-widest uppercase">
+<span>Patterns</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">Show/Hide UI</span>
+</nav>
+<h1 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tight text-on-surface">Bottom Sheet Entrance</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg">A standard rhythmic entry for contextual modal layers. Focuses on physical momentum and tactile feedback through organic deceleration.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest text-on-surface hover:bg-surface-bright transition-all px-6 py-3 rounded-lg flex items-center gap-2 font-semibold active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+                    Save Favorite
+                </button>
+<button class="bg-primary text-on-primary hover:opacity-90 transition-all px-6 py-3 rounded-lg flex items-center gap-2 font-semibold active:scale-95 duration-200 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" data-icon="content_copy">content_copy</span>
+                    Copy Spec
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<section class="lg:col-span-7 space-y-8">
+<div class="aspect-video bg-surface-container-lowest rounded-xl overflow-hidden relative group border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-60" data-alt="minimalist 3D abstract render of flowing dark obsidian ribbons with subtle blue light highlights on the edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeC_mZEYBQOsgA3iYeuG_LgeRck_LaI4T5TrE09mC8Ich_d7nPBvh-HTx2NPIMNgg9l48nv_0emgWQrSAEOAzROITyyc31AFqZVIi7eUeZ700Zyz1Nx2QX02RpHvAqswleQJCOGI3pClBpxk-Y6zv5-NApjxztN_0vW26sc2ZZ3z1VK5DNcSmyPfuxSp8PxoJ6hECP_hAJbRC31sC-IEMoLclCiXMYnFIKkmwhnwzcIbZKvD0fIn17WuJTZpbALS8phG_2HtUqG8qi"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-20 h-20 bg-primary/20 backdrop-blur-md rounded-full flex items-center justify-center border border-primary/30 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-surface-container-highest/80 backdrop-blur-md px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase text-on-surface">Preview v1.2</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">bolt</span>
+<h3 class="font-headline font-bold uppercase tracking-wider text-sm">Trigger</h3>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Manual invocation via user-initiated click event on primary action buttons or overflow menus.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">settings_input_component</span>
+<h3 class="font-headline font-bold uppercase tracking-wider text-sm">Driver</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-xs text-on-surface">Spring-loaded</span>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-xs text-on-surface">Gesture-aware</span>
+</div>
+</div>
+</div>
+</section>
+<aside class="lg:col-span-5 space-y-6">
+<div class="bg-surface-container-high rounded-xl p-8 border-l-4 border-primary">
+<h2 class="font-headline text-2xl font-bold mb-8">Technical Spec</h2>
+<div class="space-y-8">
+<div class="space-y-4">
+<label class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Primitives</label>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Translate Y</span>
+<span class="font-mono text-tertiary">100% → 0%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+<div class="flex justify-between items-center text-sm pt-2">
+<span class="text-on-surface-variant">Opacity</span>
+<span class="font-mono text-tertiary">0.0 → 1.0</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-3/4"></div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Timing Preset</label>
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant/20 font-mono text-xs leading-relaxed text-secondary-fixed-dim">
+<span class="text-primary-dim">const</span> config = {<br/>
+                                  stiffness: <span class="text-tertiary">180</span>,<br/>
+                                  damping: <span class="text-tertiary">12</span>,<br/>
+                                  mass: <span class="text-tertiary">1.1</span><br/>
+                                };
+                            </div>
+</div>
+<div class="space-y-4">
+<label class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Choreography</label>
+<ul class="space-y-3 text-sm">
+<li class="flex gap-3">
+<span class="text-primary font-bold">01.</span>
+<span class="text-on-surface-variant">Scrim fades to 40% over 250ms</span>
+</li>
+<li class="flex gap-3">
+<span class="text-primary font-bold">02.</span>
+<span class="text-on-surface-variant">Main container translates with overshoot</span>
+</li>
+<li class="flex gap-3">
+<span class="text-primary font-bold">03.</span>
+<span class="text-on-surface-variant">Inner list items stagger entrance (20ms)</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h4 class="font-headline font-bold text-sm mb-4 uppercase tracking-widest text-on-surface-variant">Related Patterns</h4>
+<div class="space-y-3">
+<div class="group flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="unfold_more">unfold_more</span>
+<span class="text-sm font-medium">Drawer Expansion</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<div class="group flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="expand_content">expand_content</span>
+<span class="text-sm font-medium">Shared Axis Transition</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#0e0e0e]/70 backdrop-blur-xl z-50 rounded-t-xl border-t border-[#484848]/20 shadow-[0px_-10px_30px_rgba(0,0,0,0.5)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-5 py-1.5 scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-inter text-[10px] font-medium">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-inter text-[10px] font-medium">Favorites</span>
+</a>
+</nav>
+</body></html>

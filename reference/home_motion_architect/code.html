@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#2c2c2c",
+                        "on-error-container": "#ff9993",
+                        "on-secondary-container": "#bebfc5",
+                        "on-primary-fixed-variant": "#0057bd",
+                        "secondary-fixed": "#e2e2e9",
+                        "secondary-fixed-dim": "#d4d4db",
+                        "outline-variant": "#484848",
+                        "outline": "#767575",
+                        "error": "#ee7d77",
+                        "error-container": "#7f2927",
+                        "surface-container-low": "#131313",
+                        "on-background": "#e7e5e4",
+                        "primary-dim": "#98b8ff",
+                        "inverse-primary": "#005bc4",
+                        "tertiary-fixed": "#d3ceef",
+                        "inverse-surface": "#fcf8f8",
+                        "on-tertiary-container": "#47445f",
+                        "primary-container": "#004395",
+                        "surface-container": "#191a1a",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#bdd0ff",
+                        "tertiary-dim": "#c5c0e0",
+                        "tertiary": "#e1dcfd",
+                        "surface-container-lowest": "#000000",
+                        "secondary": "#9d9da4",
+                        "on-tertiary-fixed-variant": "#504e69",
+                        "on-tertiary": "#504d68",
+                        "surface-dim": "#0e0e0e",
+                        "tertiary-fixed-dim": "#c5c0e0",
+                        "on-surface": "#e7e5e4",
+                        "on-secondary-fixed": "#3e3f45",
+                        "primary-fixed-dim": "#c3d4ff",
+                        "on-primary-fixed": "#003c86",
+                        "secondary-dim": "#9d9da4",
+                        "surface-tint": "#adc6ff",
+                        "error-dim": "#bb5551",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "secondary-container": "#3a3b41",
+                        "tertiary-container": "#d3ceef",
+                        "surface-container-highest": "#252626",
+                        "inverse-on-surface": "#565554",
+                        "surface-variant": "#252626",
+                        "surface-container-high": "#1f2020",
+                        "on-error": "#490106",
+                        "on-secondary": "#1e2025",
+                        "on-tertiary-fixed": "#34314b",
+                        "on-primary": "#003d88",
+                        "surface": "#0e0e0e",
+                        "background": "#0e0e0e",
+                        "on-surface-variant": "#acabaa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .glass-header {
+            background: rgba(14, 14, 14, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 glass-header">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="architecture">architecture</span>
+<span class="text-lg font-black tracking-tighter text-[#adc6ff] font-headline uppercase">Motion Architect</span>
+</div>
+<div class="flex items-center gap-6">
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-[#adc6ff] font-manrope tracking-wider uppercase font-bold text-xs" href="#">Home</a>
+<a class="text-[#e7e5e4]/60 hover:text-[#adc6ff] transition-colors font-manrope tracking-wider uppercase font-bold text-xs" href="#">Search</a>
+<a class="text-[#e7e5e4]/60 hover:text-[#adc6ff] transition-colors font-manrope tracking-wider uppercase font-bold text-xs" href="#">Favorites</a>
+</nav>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest border border-outline-variant/20 flex items-center justify-center overflow-hidden">
+<img alt="user profile" class="w-full h-full object-cover" data-alt="minimalist 3d avatar of a digital designer with sleek glasses and dark tech-wear aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8zjiSukNM9AorGZrgi1CL6kQl8I3EwIqYdNfw_jToy_PtbnnPy9b8Q2oQ9-8pIDfPZnev6tqiRfUsvJZQMrgNg5a7p2FDfxL5wY5M1WyLHWWcFtifk41rxRCZz-XYCVRMs7gJLP3UogxRXSxyCAgByaUzreRLe6_EoU_PkGBvAYMsCDXGVbNJvvavXggczEbjxbnD80fZk5iX6hRWDdz_f4XIDlsjWb1ipw7UkIHDmY1085JyZKtYZWGSs0hTH_GZF5QYDn4vWE68"/>
+</div>
+</div>
+</div>
+<div class="bg-[#131313] h-[1px] w-full"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero / Guided Flow Section -->
+<section class="mt-8 mb-16">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-8 md:p-12 border border-outline-variant/10">
+<div class="relative z-10 max-w-2xl">
+<span class="text-primary font-headline font-bold tracking-[0.2em] uppercase text-xs mb-4 block">System Orchestrator</span>
+<h1 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tight text-on-background leading-tight mb-6">
+                        Define your digital <span class="text-primary">physics.</span>
+</h1>
+<p class="text-on-surface-variant text-lg mb-10 max-w-lg leading-relaxed">
+                        A systematic approach to choosing the right easing, duration, and curve for every interaction in your application.
+                    </p>
+<button class="group flex items-center gap-4 bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-headline font-bold transition-all active:scale-95 shadow-lg shadow-primary/10">
+<span>Guided Flow</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="east">east</span>
+</button>
+</div>
+<!-- Abstract Decorative Element (Asymmetry) -->
+<div class="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
+<div class="absolute inset-0 bg-gradient-to-l from-surface-container-low to-transparent z-10"></div>
+<div class="w-full h-full opacity-40 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-2 border-primary/10 rounded-full animate-pulse"></div>
+</div>
+</div>
+</section>
+<!-- Search Bar Section -->
+<section class="mb-16">
+<div class="max-w-xl">
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-1 focus:ring-primary/40 transition-all" placeholder="Search patterns by intent (e.g. 'exit', 'expand')..." type="text"/>
+</div>
+<div class="flex gap-2 mt-4 overflow-x-auto pb-2 no-scrollbar">
+<span class="px-3 py-1 bg-surface-container text-xs rounded-full border border-outline-variant/20 text-on-surface-variant">Entrance</span>
+<span class="px-3 py-1 bg-surface-container text-xs rounded-full border border-outline-variant/20 text-on-surface-variant">Emphasis</span>
+<span class="px-3 py-1 bg-surface-container text-xs rounded-full border border-outline-variant/20 text-on-surface-variant">Navigation</span>
+<span class="px-3 py-1 bg-surface-container text-xs rounded-full border border-outline-variant/20 text-on-surface-variant">Feedback</span>
+</div>
+</div>
+</section>
+<!-- Recent Patterns Bento/Grid Section -->
+<section>
+<div class="flex items-baseline justify-between mb-8">
+<h2 class="text-2xl font-headline font-bold text-on-background tracking-tight">Recent Patterns</h2>
+<a class="text-primary text-sm font-medium hover:underline" href="#">View Library</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group bg-surface-container-high rounded-xl p-1 hover:bg-surface-bright transition-all duration-300">
+<div class="aspect-video w-full rounded-lg bg-surface-container-lowest overflow-hidden relative flex items-center justify-center">
+<!-- Simulated looping preview -->
+<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+<div class="w-6 h-6 bg-primary rounded-sm animate-bounce"></div>
+</div>
+<div class="absolute bottom-2 right-2 px-2 py-1 bg-black/40 backdrop-blur-md rounded text-[10px] font-mono text-primary uppercase tracking-widest">Spring-Bounce</div>
+</div>
+<div class="p-4">
+<h3 class="font-headline font-bold text-on-surface mb-1">Standard Modal Entry</h3>
+<p class="text-xs text-on-surface-variant">300ms • Emphasized Decelerate</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-high rounded-xl p-1 hover:bg-surface-bright transition-all duration-300">
+<div class="aspect-video w-full rounded-lg bg-surface-container-lowest overflow-hidden relative flex items-center justify-center">
+<div class="w-24 h-1 bg-surface-container-highest rounded-full relative">
+<div class="absolute inset-0 bg-primary w-1/2 rounded-full animate-[pulse_2s_infinite]"></div>
+</div>
+<div class="absolute bottom-2 right-2 px-2 py-1 bg-black/40 backdrop-blur-md rounded text-[10px] font-mono text-primary uppercase tracking-widest">Linear-Step</div>
+</div>
+<div class="p-4">
+<h3 class="font-headline font-bold text-on-surface mb-1">Progressive Loader</h3>
+<p class="text-xs text-on-surface-variant">800ms • Linear-Out-Slow-In</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-high rounded-xl p-1 hover:bg-surface-bright transition-all duration-300">
+<div class="aspect-video w-full rounded-lg bg-surface-container-lowest overflow-hidden relative flex items-center justify-center">
+<div class="grid grid-cols-2 gap-2">
+<div class="w-4 h-4 bg-tertiary/40 rounded-full"></div>
+<div class="w-4 h-4 bg-tertiary/40 rounded-full animate-ping"></div>
+</div>
+<div class="absolute bottom-2 right-2 px-2 py-1 bg-black/40 backdrop-blur-md rounded text-[10px] font-mono text-primary uppercase tracking-widest">Pulse-Soft</div>
+</div>
+<div class="p-4">
+<h3 class="font-headline font-bold text-on-surface mb-1">Unread Indicator</h3>
+<p class="text-xs text-on-surface-variant">1200ms • Custom Bezier</p>
+</div>
+</div>
+<!-- Card 4 (Asymmetric Large) -->
+<div class="group md:col-span-2 bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 flex flex-col md:flex-row gap-8 items-center hover:bg-surface-container transition-all">
+<div class="w-full md:w-1/2 aspect-video bg-black rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="tech visual" class="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:opacity-50 transition-all duration-700" data-alt="close-up of futuristic hardware circuitry with glowing blue data streams and obsidian black textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXPEcFd6odPK9TdlieSxOm_BM5cwUFRMGaj3VCMOHF3cbTgYP7JZCUmKlW5FuUtzdZgKcEx-_KHuSFjiFBtFdcZM4EziWnYEWQ59SB5S0dkYZy0hkWbQ0VAoOJ4P4HoWOSibjMXPvrRTxGcAYSrkBDAcu0S4cd2qKTMXBP48CXtv8A4zm0fag5Jpr_nDdYPUNNkUsQ9Jxp4NzBsioWRT2A12WE0V3Ku90zqQz0j46eFsNueJIvTCYoIFuN_suYKhEVvWocqXQ6n_NU"/>
+</div>
+<div class="w-full md:w-1/2">
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-widest mb-2 block">Advanced Tooling</span>
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Custom Bezier Playground</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Manipulate handles directly to create unique easing curves for specialized brand interactions.</p>
+<button class="text-sm font-bold text-primary flex items-center gap-2">
+                            Open Editor
+                            <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full glass-header flex justify-around items-center px-4 pb-6 pt-2 z-50 rounded-t-xl border-t border-[#484848]/20 shadow-[0px_-10px_30px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-5 py-1.5 transition-all scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-inter text-[10px] font-medium mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-inter text-[10px] font-medium mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-inter text-[10px] font-medium mt-1">Favorites</span>
+</a>
+</nav>
+<!-- Contextual FAB -->
+<div class="fixed bottom-24 right-6 md:bottom-12 md:right-12 z-40">
+<button class="h-14 w-14 rounded-full bg-primary text-on-primary shadow-2xl flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="add" style="font-variation-settings: 'wght' 600;">add</span>
+</button>
+</div>
+</body></html>

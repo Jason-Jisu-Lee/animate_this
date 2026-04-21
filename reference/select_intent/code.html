@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#2c2c2c",
+                        "on-error-container": "#ff9993",
+                        "on-secondary-container": "#bebfc5",
+                        "on-primary-fixed-variant": "#0057bd",
+                        "secondary-fixed": "#e2e2e9",
+                        "secondary-fixed-dim": "#d4d4db",
+                        "outline-variant": "#484848",
+                        "outline": "#767575",
+                        "error": "#ee7d77",
+                        "error-container": "#7f2927",
+                        "surface-container-low": "#131313",
+                        "on-background": "#e7e5e4",
+                        "primary-dim": "#98b8ff",
+                        "inverse-primary": "#005bc4",
+                        "tertiary-fixed": "#d3ceef",
+                        "inverse-surface": "#fcf8f8",
+                        "on-tertiary-container": "#47445f",
+                        "primary-container": "#004395",
+                        "surface-container": "#191a1a",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#bdd0ff",
+                        "tertiary-dim": "#c5c0e0",
+                        "tertiary": "#e1dcfd",
+                        "surface-container-lowest": "#000000",
+                        "secondary": "#9d9da4",
+                        "on-tertiary-fixed-variant": "#504e69",
+                        "on-tertiary": "#504d68",
+                        "surface-dim": "#0e0e0e",
+                        "tertiary-fixed-dim": "#c5c0e0",
+                        "on-surface": "#e7e5e4",
+                        "on-secondary-fixed": "#3e3f45",
+                        "primary-fixed-dim": "#c3d4ff",
+                        "on-primary-fixed": "#003c86",
+                        "secondary-dim": "#9d9da4",
+                        "surface-tint": "#adc6ff",
+                        "error-dim": "#bb5551",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "secondary-container": "#3a3b41",
+                        "tertiary-container": "#d3ceef",
+                        "surface-container-highest": "#252626",
+                        "inverse-on-surface": "#565554",
+                        "surface-variant": "#252626",
+                        "surface-container-high": "#1f2020",
+                        "on-error": "#490106",
+                        "on-secondary": "#1e2025",
+                        "on-tertiary-fixed": "#34314b",
+                        "on-primary": "#003d88",
+                        "surface": "#0e0e0e",
+                        "background": "#0e0e0e",
+                        "on-surface-variant": "#acabaa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- Shared Component: TopAppBar -->
+<header class="bg-[#0e0e0e]/70 backdrop-blur-xl fixed top-0 w-full z-50">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="architecture">architecture</span>
+<span class="text-lg font-black tracking-tighter text-[#adc6ff] font-manrope uppercase">Motion Architect</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-[#adc6ff] font-manrope tracking-wider uppercase font-bold text-sm" href="#">Home</a>
+<a class="text-[#e7e5e4]/60 hover:text-[#adc6ff] transition-colors font-manrope tracking-wider uppercase font-bold text-sm" href="#">Library</a>
+<a class="text-[#e7e5e4]/60 hover:text-[#adc6ff] transition-colors font-manrope tracking-wider uppercase font-bold text-sm" href="#">Settings</a>
+</nav>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close-up minimalist portrait of a software engineer with professional neutral lighting and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEo-yRbhVtlPNbSCUruiEdsAsMs4L9kUBIYAy3rY4pTh2t9QphG1vP-oQ0Y2k_3QYkeq95ckLncef-mqnQlMyv0_LB-8zFfJOpVHltUz0PAwkiFugvfBncP-_BLIa6SPaw7g7P-NNm6HXsFmFnA9vwY_wUo-qCvKULJ0AhKITm6uKqFtwMddSOAXrfHif-KuQMaLXYrA7watTdnuzP5qBZpTohNw6XwQuW3GNo7g1FytPbirLUCD6EZkKGXKzssLSceLmDL4kQlqCd"/>
+</div>
+</div>
+</div>
+<div class="bg-[#131313] h-[1px] w-full"></div>
+</header>
+<main class="pt-32 pb-40 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Content Header -->
+<section class="mb-16">
+<span class="text-primary font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Step 01 — Framework Selection</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-background mb-6">
+                Intent Categories
+            </h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+                Define the core behavior of your micro-interaction. The "Silent Architect" prioritizes functional clarity over decorative motion.
+            </p>
+</section>
+<!-- Category Grid (Asymmetric Bento) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Item 1: Screen Transition -->
+<div class="md:col-span-8 group cursor-pointer bg-surface-container-low rounded-xl p-8 hover:bg-surface-container-high transition-all duration-300 border border-transparent active:scale-[0.98]">
+<div class="flex justify-between items-start mb-12">
+<div class="bg-surface-container-highest p-4 rounded-xl text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="move_item">move_item</span>
+</div>
+<span class="text-outline text-sm font-mono tracking-tighter">01</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-2">Screen Transition</h3>
+<p class="text-on-surface-variant text-sm max-w-sm">Manage spatial continuity between primary views using shared element choreography.</p>
+</div>
+<!-- Item 2: Show/Hide UI -->
+<div class="md:col-span-4 group cursor-pointer bg-surface-container-low rounded-xl p-8 hover:bg-surface-container-high transition-all duration-300 border border-transparent active:scale-[0.98]">
+<div class="flex justify-between items-start mb-12">
+<div class="bg-surface-container-highest p-4 rounded-xl text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="visibility">visibility</span>
+</div>
+<span class="text-outline text-sm font-mono tracking-tighter">02</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-2">Show/Hide UI</h3>
+<p class="text-on-surface-variant text-sm">Contextual reveals for sidebars, overlays, and floating modules.</p>
+</div>
+<!-- Item 3: Feedback/Validation -->
+<div class="md:col-span-4 group cursor-pointer bg-surface-container-low rounded-xl p-8 hover:bg-surface-container-high transition-all duration-300 border border-transparent active:scale-[0.98]">
+<div class="flex justify-between items-start mb-12">
+<div class="bg-surface-container-highest p-4 rounded-xl text-error group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="error_outline">error_outline</span>
+</div>
+<span class="text-outline text-sm font-mono tracking-tighter">03</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-2">Feedback</h3>
+<p class="text-on-surface-variant text-sm">Reactive states for errors, successes, and warning pulses.</p>
+</div>
+<!-- Item 4: Loading/Async -->
+<div class="md:col-span-4 group cursor-pointer bg-surface-container-low rounded-xl p-8 hover:bg-surface-container-high transition-all duration-300 border border-transparent active:scale-[0.98]">
+<div class="flex justify-between items-start mb-12">
+<div class="bg-surface-container-highest p-4 rounded-xl text-tertiary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="hourglass_empty">hourglass_empty</span>
+</div>
+<span class="text-outline text-sm font-mono tracking-tighter">04</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-2">Loading/Async</h3>
+<p class="text-on-surface-variant text-sm">Maintaining perceived speed during data fetch operations.</p>
+</div>
+<!-- Item 5: Drag/Scroll -->
+<div class="md:col-span-4 group cursor-pointer bg-surface-container-low rounded-xl p-8 hover:bg-surface-container-high transition-all duration-300 border border-transparent active:scale-[0.98]">
+<div class="flex justify-between items-start mb-12">
+<div class="bg-surface-container-highest p-4 rounded-xl text-on-surface group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="drag_pan">drag_pan</span>
+</div>
+<span class="text-outline text-sm font-mono tracking-tighter">05</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-2">Drag/Scroll</h3>
+<p class="text-on-surface-variant text-sm">Gestural physics for list management and canvas navigation.</p>
+</div>
+<!-- Item 6: Forms/Input -->
+<div class="md:col-span-12 group cursor-pointer bg-primary-container/20 rounded-xl p-8 hover:bg-primary-container/30 transition-all duration-300 border border-primary/10 active:scale-[0.99] flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="bg-primary p-4 rounded-xl text-on-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="edit_note">edit_note</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold mb-1">Forms/Input</h3>
+<p class="text-on-primary-container text-sm">Dynamic focus states and field-level validation flows.</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-primary font-bold uppercase tracking-widest text-xs">Recommended</span>
+<span class="material-symbols-outlined text-primary" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- System Hint -->
+<div class="mt-16 flex items-center gap-4 bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-outline" data-icon="info">info</span>
+<p class="text-sm text-outline">Selected intents will determine the underlying interpolation curves and physics constants for the generated motion code.</p>
+</div>
+</main>
+<!-- Shared Component: BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#0e0e0e]/70 backdrop-blur-xl z-50 rounded-t-xl shadow-[0px_-10px_30px_rgba(0,0,0,0.5)] border-t border-[#484848]/20 md:hidden">
+<button class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-5 py-1.5 transition-all scale-110 duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-medium mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-inter text-[10px] font-medium mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-inter text-[10px] font-medium mt-1">Favorites</span>
+</button>
+</nav>
+</body></html>

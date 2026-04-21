@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pattern Selection | Motion Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#2c2c2c",
+                        "on-error-container": "#ff9993",
+                        "on-secondary-container": "#bebfc5",
+                        "on-primary-fixed-variant": "#0057bd",
+                        "secondary-fixed": "#e2e2e9",
+                        "secondary-fixed-dim": "#d4d4db",
+                        "outline-variant": "#484848",
+                        "outline": "#767575",
+                        "error": "#ee7d77",
+                        "error-container": "#7f2927",
+                        "surface-container-low": "#131313",
+                        "on-background": "#e7e5e4",
+                        "primary-dim": "#98b8ff",
+                        "inverse-primary": "#005bc4",
+                        "tertiary-fixed": "#d3ceef",
+                        "inverse-surface": "#fcf8f8",
+                        "on-tertiary-container": "#47445f",
+                        "primary-container": "#004395",
+                        "surface-container": "#191a1a",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#bdd0ff",
+                        "tertiary-dim": "#c5c0e0",
+                        "tertiary": "#e1dcfd",
+                        "surface-container-lowest": "#000000",
+                        "secondary": "#9d9da4",
+                        "on-tertiary-fixed-variant": "#504e69",
+                        "on-tertiary": "#504d68",
+                        "surface-dim": "#0e0e0e",
+                        "tertiary-fixed-dim": "#c5c0e0",
+                        "on-surface": "#e7e5e4",
+                        "on-secondary-fixed": "#3e3f45",
+                        "primary-fixed-dim": "#c3d4ff",
+                        "on-primary-fixed": "#003c86",
+                        "secondary-dim": "#9d9da4",
+                        "surface-tint": "#adc6ff",
+                        "error-dim": "#bb5551",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "secondary-container": "#3a3b41",
+                        "tertiary-container": "#d3ceef",
+                        "surface-container-highest": "#252626",
+                        "inverse-on-surface": "#565554",
+                        "surface-variant": "#252626",
+                        "surface-container-high": "#1f2020",
+                        "on-error": "#490106",
+                        "on-secondary": "#1e2025",
+                        "on-tertiary-fixed": "#34314b",
+                        "on-primary": "#003d88",
+                        "surface": "#0e0e0e",
+                        "background": "#0e0e0e",
+                        "on-surface-variant": "#acabaa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .glass-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/70 backdrop-blur-xl flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="architecture">architecture</span>
+<span class="text-lg font-black tracking-tighter text-[#adc6ff] font-manrope tracking-wider uppercase font-bold">Motion Architect</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-[#adc6ff] font-medium text-sm transition-colors" href="#">Patterns</a>
+<a class="text-[#e7e5e4]/60 hover:text-[#adc6ff] font-medium text-sm transition-colors" href="#">Library</a>
+<a class="text-[#e7e5e4]/60 hover:text-[#adc6ff] font-medium text-sm transition-colors" href="#">Documentation</a>
+</nav>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/20 overflow-hidden">
+<img alt="User Profile" data-alt="close-up minimalist portrait avatar of a software developer with neutral expression in a high-tech studio environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe5PFJv9lHs_v9VArbMyeWbHpcUWyLYnnIV04GNJLcm5weWan0GhLKLEZlDEr8V3TNr7Y7TTnd5ATj9e-FIxnmMLrHO0_L1Iqjv90cv49a5zHr29I4SqCwRuGe6pn2CvOwxQtHrwDzfiVXmUc98SysZu7ixWYZw3LfYny_1zcDRvB2XfGyuMkGaBEWNOVydNggqqpB2CoipAldQOLGWomSV4lR2wA96TSHLGRafjYQPA9nzmnqiDEjUglSjJV5mcW1DASsTWdkjnaJ"/>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 bg-[#131313] h-[1px] w-full"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Progress Stepper -->
+<div class="mb-12 flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check">check</span>
+</div>
+<span class="text-on-surface-variant text-sm font-medium">Intent</span>
+</div>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm">2</div>
+<span class="text-on-surface text-sm font-bold">Pattern Selection</span>
+</div>
+<div class="h-[1px] w-8 bg-outline-variant/30"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center text-on-surface-variant font-bold text-sm">3</div>
+<span class="text-on-surface-variant text-sm font-medium">Configure</span>
+</div>
+</div>
+<!-- Header Content -->
+<div class="mb-12">
+<h1 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight mb-4">Choose your interaction shell</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+                Select the structural pattern that best fits your intent. These components are optimized for performance and accessibility.
+            </p>
+</div>
+<!-- Pattern Grid -->
+<div class="pattern-grid">
+<!-- Pattern 1: Bottom Sheet -->
+<div class="group bg-surface-container-low rounded-xl p-1 transition-all duration-300 hover:bg-surface-container-high cursor-pointer ring-1 ring-outline-variant/10 hover:ring-primary/40">
+<div class="bg-surface-container-lowest rounded-lg aspect-video mb-4 overflow-hidden relative flex items-end justify-center p-4">
+<!-- Preview Animation Placeholder -->
+<div class="w-full h-16 bg-surface-container-highest rounded-t-xl border-t border-x border-outline-variant/40 relative transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<div class="w-8 h-1 bg-outline-variant/40 rounded-full mx-auto mt-2"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="px-4 pb-5">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-on-surface font-bold text-lg">Bottom Sheet</h3>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="open_in_full">open_in_full</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1">Ideal for supplemental content on mobile devices.</p>
+</div>
+</div>
+<!-- Pattern 2: Modal/Dialog -->
+<div class="group bg-surface-container-low rounded-xl p-1 transition-all duration-300 hover:bg-surface-container-high cursor-pointer ring-1 ring-outline-variant/10 hover:ring-primary/40">
+<div class="bg-surface-container-lowest rounded-lg aspect-video mb-4 overflow-hidden relative flex items-center justify-center">
+<!-- Preview Animation Placeholder -->
+<div class="w-24 h-16 bg-surface-container-high rounded-lg border border-outline-variant/40 shadow-2xl transform scale-90 group-hover:scale-100 transition-transform duration-500 flex flex-col p-2">
+<div class="w-full h-2 bg-primary/20 rounded-full mb-1"></div>
+<div class="w-2/3 h-1.5 bg-outline-variant/30 rounded-full mb-auto"></div>
+<div class="flex gap-1 justify-end">
+<div class="w-4 h-3 bg-surface-container-highest rounded-sm"></div>
+<div class="w-4 h-3 bg-primary/40 rounded-sm"></div>
+</div>
+</div>
+</div>
+<div class="px-4 pb-5">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-on-surface font-bold text-lg">Modal/Dialog</h3>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="centered_content">center_focus_strong</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1">Requires user action before proceeding.</p>
+</div>
+</div>
+<!-- Pattern 3: Accordion -->
+<div class="group bg-surface-container-low rounded-xl p-1 transition-all duration-300 hover:bg-surface-container-high cursor-pointer ring-1 ring-outline-variant/10 hover:ring-primary/40">
+<div class="bg-surface-container-lowest rounded-lg aspect-video mb-4 overflow-hidden relative flex flex-col gap-2 p-6">
+<!-- Preview Animation Placeholder -->
+<div class="w-full h-6 bg-surface-container-high rounded border border-outline-variant/40 flex items-center justify-between px-2">
+<div class="w-12 h-1.5 bg-outline-variant/40 rounded-full"></div>
+<span class="material-symbols-outlined text-[10px] text-outline" data-icon="expand_more">expand_more</span>
+</div>
+<div class="w-full h-12 bg-surface-container-high rounded border border-primary/20 p-2 overflow-hidden transition-all duration-500">
+<div class="flex items-center justify-between mb-2">
+<div class="w-16 h-1.5 bg-primary/40 rounded-full"></div>
+<span class="material-symbols-outlined text-[10px] text-primary" data-icon="expand_less">expand_less</span>
+</div>
+<div class="space-y-1">
+<div class="w-full h-1 bg-outline-variant/20 rounded-full"></div>
+<div class="w-4/5 h-1 bg-outline-variant/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="px-4 pb-5">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-on-surface font-bold text-lg">Accordion</h3>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="unfold_more">unfold_more</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1">Organize large amounts of content vertically.</p>
+</div>
+</div>
+<!-- Pattern 4: Tooltip/Popover -->
+<div class="group bg-surface-container-low rounded-xl p-1 transition-all duration-300 hover:bg-surface-container-high cursor-pointer ring-1 ring-outline-variant/10 hover:ring-primary/40">
+<div class="bg-surface-container-lowest rounded-lg aspect-video mb-4 overflow-hidden relative flex items-center justify-center">
+<!-- Preview Animation Placeholder -->
+<div class="relative">
+<div class="w-4 h-4 rounded-full bg-primary/20 border border-primary/40 group-hover:scale-110 transition-transform"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-20 p-2 bg-surface-bright rounded shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+<div class="w-full h-1 bg-on-surface/40 rounded-full mb-1"></div>
+<div class="w-2/3 h-1 bg-on-surface/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="px-4 pb-5">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-on-surface font-bold text-lg">Tooltip/Popover</h3>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="info">info</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1">Brief descriptions or contextual menus.</p>
+</div>
+</div>
+<!-- Pattern 5: Drawer -->
+<div class="group bg-surface-container-low rounded-xl p-1 transition-all duration-300 hover:bg-surface-container-high cursor-pointer ring-1 ring-outline-variant/10 hover:ring-primary/40">
+<div class="bg-surface-container-lowest rounded-lg aspect-video mb-4 overflow-hidden relative flex items-center">
+<!-- Preview Animation Placeholder -->
+<div class="w-16 h-full bg-surface-container-high border-r border-outline-variant/40 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 p-3 space-y-2">
+<div class="w-full h-1.5 bg-primary/30 rounded-full"></div>
+<div class="w-full h-1.5 bg-outline-variant/30 rounded-full"></div>
+<div class="w-full h-1.5 bg-outline-variant/30 rounded-full"></div>
+</div>
+</div>
+<div class="px-4 pb-5">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-on-surface font-bold text-lg">Drawer</h3>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="side_navigation">side_navigation</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1">Navigation or filtering panels from the screen edge.</p>
+</div>
+</div>
+<!-- Pattern 6: Card Expansion -->
+<div class="group bg-surface-container-low rounded-xl p-1 transition-all duration-300 hover:bg-surface-container-high cursor-pointer ring-1 ring-outline-variant/10 hover:ring-primary/40">
+<div class="bg-surface-container-lowest rounded-lg aspect-video mb-4 overflow-hidden relative flex items-center justify-center p-6">
+<!-- Preview Animation Placeholder -->
+<div class="w-24 h-12 bg-surface-container-high rounded border border-outline-variant/40 group-hover:w-full group-hover:h-full transition-all duration-500 flex flex-col p-2">
+<div class="w-8 h-8 rounded bg-primary/10 mb-2"></div>
+<div class="w-full h-2 bg-outline-variant/20 rounded opacity-0 group-hover:opacity-100 transition-opacity delay-200"></div>
+</div>
+</div>
+<div class="px-4 pb-5">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-on-surface font-bold text-lg">Card Expansion</h3>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="photo_size_select_small">photo_size_select_small</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1">Transform cards into full-screen focus modes.</p>
+</div>
+</div>
+<!-- Pattern 7: Notification Toast -->
+<div class="group bg-surface-container-low rounded-xl p-1 transition-all duration-300 hover:bg-surface-container-high cursor-pointer ring-1 ring-outline-variant/10 hover:ring-primary/40">
+<div class="bg-surface-container-lowest rounded-lg aspect-video mb-4 overflow-hidden relative flex items-end justify-center p-4">
+<!-- Preview Animation Placeholder -->
+<div class="w-3/4 h-8 bg-surface-bright rounded border border-primary/30 shadow-lg transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500 flex items-center px-2 gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/80"></div>
+<div class="w-16 h-1 bg-on-surface/40 rounded-full"></div>
+</div>
+</div>
+<div class="px-4 pb-5">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-on-surface font-bold text-lg">Notification Toast</h3>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="notification_important">notification_important</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1">Non-intrusive feedback about operations.</p>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<div class="mt-16 flex items-center justify-between bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10">
+<div>
+<h4 class="text-xl font-bold mb-2">Ready to configure?</h4>
+<p class="text-on-surface-variant">Select a pattern above to proceed to the styling and behavior engine.</p>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:bg-primary-dim transition-all active:scale-95 disabled:opacity-50" disabled="">
+                Next Step
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#0e0e0e]/70 backdrop-blur-xl border-t border-[#484848]/20 shadow-[0px_-10px_30px_rgba(0,0,0,0.5)] z-50">
+<div class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all rounded-xl">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-5 py-1.5 scale-110 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span class="font-inter text-[10px] font-medium">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e7e5e4]/50 px-5 py-1.5 hover:bg-[#2c2c2c] transition-all rounded-xl">
+<span class="material-symbols-outlined mb-1" data-icon="star">star</span>
+<span class="font-inter text-[10px] font-medium">Favorites</span>
+</div>
+</nav>
+</body></html>
