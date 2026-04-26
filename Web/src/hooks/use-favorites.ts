@@ -1,30 +1,43 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
 export function useFavorites() {
-  const [favorites, setFavorites] = useState<string[]>([])
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const storageKey = "motion-architect-favorites";
 
   useEffect(() => {
-    const stored = localStorage.getItem('motion-architect-favorites')
-    if (stored) {
-      try {
-        setFavorites(JSON.parse(stored))
-      } catch {
-        setFavorites([])
-      }
+    if (typeof window === "undefined") {
+      return;
     }
-  }, [])
+
+    try {
+      const stored = window.localStorage.getItem(storageKey);
+      if (stored) {
+        setFavorites(JSON.parse(stored));
+      }
+    } catch {
+      setFavorites([]);
+    }
+  }, []);
 
   const toggleFavorite = (patternId: string) => {
-    setFavorites(prev => {
+    setFavorites((prev) => {
       const newFavorites = prev.includes(patternId)
-        ? prev.filter(id => id !== patternId)
-        : [...prev, patternId]
-      localStorage.setItem('motion-architect-favorites', JSON.stringify(newFavorites))
-      return newFavorites
-    })
-  }
+        ? prev.filter((id) => id !== patternId)
+        : [...prev, patternId];
 
-  const isFavorite = (patternId: string) => favorites.includes(patternId)
+      try {
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(storageKey, JSON.stringify(newFavorites));
+        }
+      } catch {
+        // Keep the in-memory state even if persistence is unavailable.
+      }
 
-  return { favorites, toggleFavorite, isFavorite }
+      return newFavorites;
+    });
+  };
+
+  const isFavorite = (patternId: string) => favorites.includes(patternId);
+
+  return { favorites, toggleFavorite, isFavorite };
 }

@@ -1,15 +1,15 @@
-import { motion } from 'framer-motion'
-import { useNavigate, Link } from 'react-router-dom'
-import { patterns } from '@/lib/patterns'
-import { PatternCard } from '@/components/PatternCard'
-import { useFavorites } from '@/hooks/use-favorites'
-import { Button } from '@/components/ui/button'
+import { motion } from "framer-motion";
+import { useNavigate, Link } from "react-router-dom";
+import { patterns } from "@/lib/patterns";
+import { PatternCard } from "@/components/PatternCard";
+import { useFavorites } from "@/hooks/use-favorites";
+import { Button } from "@/components/ui/button";
 
 export function FavoritesPage() {
-  const navigate = useNavigate()
-  const { favorites, toggleFavorite, isFavorite } = useFavorites()
+  const navigate = useNavigate();
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
-  const favoritePatterns = patterns.filter(p => favorites.includes(p.id))
+  const favoritePatterns = patterns.filter((p) => favorites.includes(p.id));
 
   return (
     <div className="min-h-screen bg-background">
@@ -23,7 +23,8 @@ export function FavoritesPage() {
             Saved Patterns
           </h1>
           <p className="text-lg text-on-surface-variant">
-            {favoritePatterns.length} {favoritePatterns.length === 1 ? 'pattern' : 'patterns'} saved
+            {favoritePatterns.length}{" "}
+            {favoritePatterns.length === 1 ? "pattern" : "patterns"} saved
           </p>
         </motion.div>
 
@@ -68,15 +69,17 @@ export function FavoritesPage() {
             <p className="text-on-surface-variant mb-8">
               Start exploring patterns and save your favorites for quick access
             </p>
-            <Link to="/flow/intent">
+            <Link to="/library">
               <Button size="lg">
-                Start Guided Flow
-                <span className="material-symbols-outlined ml-2">arrow_forward</span>
+                Browse Library
+                <span className="material-symbols-outlined ml-2">
+                  travel_explore
+                </span>
               </Button>
             </Link>
           </motion.div>
         )}
       </div>
     </div>
-  )
+  );
 }

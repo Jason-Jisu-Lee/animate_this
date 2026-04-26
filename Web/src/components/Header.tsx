@@ -1,10 +1,10 @@
-import { Link, useLocation } from 'react-router-dom'
-import { cn } from '@/lib/utils'
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export function Header() {
-  const location = useLocation()
+  const location = useLocation();
 
-  const isActive = (path: string) => location.pathname === path
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="sticky top-0 z-50 glass-blur border-b border-outline/20">
@@ -25,7 +25,7 @@ export function Header() {
             to="/"
             className={cn(
               "text-sm font-medium transition-colors hover:text-primary",
-              isActive('/') ? "text-primary" : "text-on-surface-variant"
+              isActive("/") ? "text-primary" : "text-on-surface-variant",
             )}
           >
             Home
@@ -34,7 +34,7 @@ export function Header() {
             to="/library"
             className={cn(
               "text-sm font-medium transition-colors hover:text-primary",
-              isActive('/library') ? "text-primary" : "text-on-surface-variant"
+              isActive("/library") ? "text-primary" : "text-on-surface-variant",
             )}
           >
             Library
@@ -42,15 +42,34 @@ export function Header() {
           <Link
             to="/favorites"
             className={cn(
-              "text-sm font-medium transition-colors hover:text-primary flex items-center gap-1",
-              isActive('/favorites') ? "text-primary" : "text-on-surface-variant"
+              "text-sm font-medium transition-colors hover:text-primary",
+              isActive("/favorites")
+                ? "text-primary"
+                : "text-on-surface-variant",
             )}
           >
-            <span className="material-symbols-outlined text-sm">favorite</span>
             Favorites
+          </Link>
+          <Link
+            to="/about"
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-primary",
+              isActive("/about") ? "text-primary" : "text-on-surface-variant",
+            )}
+          >
+            About
+          </Link>
+          <Link
+            to="/contact"
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-primary",
+              isActive("/contact") ? "text-primary" : "text-on-surface-variant",
+            )}
+          >
+            Contact
           </Link>
         </nav>
       </div>
     </header>
-  )
+  );
 }
