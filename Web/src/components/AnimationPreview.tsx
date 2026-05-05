@@ -64,7 +64,7 @@ export function AnimationPreview({
   const previewAccentMutedClass = "bg-[#E7C2A8]/12";
   const previewAccentBorderClass = "border-[#E7C2A8]/24";
   const previewAccentBorderSoftClass = "border-[#E7C2A8]/18";
-  const previewMutedSurfaceClass = "border-white/10 bg-white/[0.06]";
+  const previewMutedSurfaceClass = "border border-white/10 bg-white/[0.06]";
   const previewMutedLineClass = "bg-white/14";
   const previewMutedTitleClass = "bg-white/38";
   const previewHeroPrimaryClass =
@@ -146,16 +146,30 @@ export function AnimationPreview({
     extraDelay = 0,
     durationFloor = previewDurationFloor,
   ) => {
+    const normalizeEase = (
+      ease: string,
+    ): "easeIn" | "easeOut" | "easeInOut" | "linear" => {
+      switch (ease) {
+        case "easeIn":
+        case "easeOut":
+        case "easeInOut":
+        case "linear":
+          return ease;
+        default:
+          return "easeOut";
+      }
+    };
+
     if (pattern.timing.type === "tween" && pattern.timing.tween) {
       return {
         duration: Math.max(pattern.timing.tween.duration * 1.8, durationFloor),
-        ease: pattern.timing.tween.ease,
+        ease: normalizeEase(pattern.timing.tween.ease),
         delay: previewLeadIn + extraDelay,
       };
     }
     return {
       duration: durationFloor,
-      ease: "easeOut",
+      ease: "easeOut" as const,
       delay: previewLeadIn + extraDelay,
     };
   };
@@ -250,103 +264,420 @@ export function AnimationPreview({
     </motion.div>
   );
 
-  const renderScreenSurface = (
-    accent: "primary" | "muted" = "primary",
-    includeStepper = false,
-  ) => {
-    const heroClass =
-      accent === "primary" ? previewHeroPrimaryClass : previewHeroMutedClass;
-    const titleClass =
-      accent === "primary" ? previewAccentStrongClass : previewMutedTitleClass;
-    const lineClass =
-      accent === "primary" ? previewAccentMediumClass : previewMutedLineClass;
-    const chipClass =
-      accent === "primary" ? previewAccentSoftClass : "bg-white/12";
-    const statClass =
-      accent === "primary" ? previewAccentMutedClass : "bg-white/[0.06]";
+    const renderScreenSurface = ({
+      accent = "primary",
+      variant = "orders",
+      showStepper = false,
+      activeStep = 0,
+    }: {
+      accent?: "primary" | "muted";
+      variant?:
+        | "orders"
+        | "order-detail"
+        | "discover"
+        | "saved"
+        | "wizard-contact"
+        | "wizard-payment";
+      showStepper?: boolean;
+      activeStep?: number;
+    }) => {
+      const heroClass =
+        accent === "primary"
+          ? "border-[#E7C2A8]/34 bg-[linear-gradient(135deg,rgba(231,194,168,0.32),rgba(201,126,84,0.12))]"
+          : "border-[#9DB4D1]/18 bg-[linear-gradient(135deg,rgba(157,180,209,0.16),rgba(157,180,209,0.05))]";
+      const previewMutedSurfaceClass =
+        accent === "primary"
+          ? "border border-[#E7C2A8]/16 bg-[#E7C2A8]/[0.11]"
+          : "border border-[#9DB4D1]/12 bg-[#9DB4D1]/[0.055]";
+      const titleClass =
+        accent === "primary" ? "bg-[#F0D2BA]/68" : "bg-[#D5E0EF]/42";
+      const lineClass =
+        accent === "primary" ? "bg-[#E7C2A8]/32" : "bg-[#B6C5D9]/20";
+      const chipClass =
+        accent === "primary" ? "bg-[#E7C2A8]/22" : "bg-[#9DB4D1]/14";
+      const statClass =
+        accent === "primary" ? "bg-[#E7C2A8]/18" : "bg-[#9DB4D1]/10";
+      const headingTextClass =
+        accent === "primary" ? "text-[#FFF4EC]" : "text-[#E6EEF8]/90";
+      const metaTextClass =
+        accent === "primary" ? "text-[#E9C7AE]/82" : "text-[#C1D1E4]/60";
+      const pillClass =
+        accent === "primary"
+          ? "border border-[#E7C2A8]/28 bg-[#E7C2A8]/18 text-[#FFF1E7]"
+          : "border border-[#9DB4D1]/16 bg-[#9DB4D1]/10 text-[#DCE7F4]/76";
+      const iconClass =
+        accent === "primary" ? "bg-[#E7C2A8]/20" : "bg-[#9DB4D1]/14";
+      const surfaceBgClass =
+        accent === "primary"
+          ? "bg-[linear-gradient(180deg,#241915_0%,#171015_100%)]"
+          : "bg-[linear-gradient(180deg,#0D1825_0%,#09111A_100%)]";
+      const surfaceGlowClass =
+        accent === "primary"
+          ? "bg-[radial-gradient(circle_at_top,_rgba(231,194,168,0.24),_transparent_72%)]"
+          : "bg-[radial-gradient(circle_at_top,_rgba(157,180,209,0.18),_transparent_74%)]";
+      const frameBorderClass =
+        accent === "primary" ? "border-[#E7C2A8]/32" : "border-[#A7BCD6]/18";
 
-    return (
-      <div className="relative h-full w-full overflow-hidden rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,#171C24_0%,#0F131A_100%)] shadow-[0_18px_36px_rgba(0,0,0,0.36)]">
-        <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,_rgba(231,194,168,0.18),_transparent_74%)]" />
-        <div
-          className={`relative flex h-full flex-col ${previewCardPaddingClass}`}
-        >
-          <div className="flex items-center gap-3">
+      const renderOrderRows = (trailingWidths: string[]) => (
+        <div className="mt-3 space-y-2.5">
+          {trailingWidths.map((width, index) => (
             <div
-              className={`rounded-[1rem] border border-white/8 ${chipClass} ${
-                isSmall ? "h-10 w-10" : "h-12 w-12"
-              }`}
-            />
-            <div className="flex-1 space-y-2">
-              <div
-                className={`h-3 rounded-full ${titleClass} ${
-                  isSmall ? "w-24" : "w-32"
-                }`}
-              />
-              <div
-                className={`h-2 rounded-full ${lineClass} ${
-                  isSmall ? "w-32" : "w-40"
-                }`}
-              />
+              key={`${variant}-order-${index}`}
+              className={`rounded-[1rem] p-2.5 ${previewMutedSurfaceClass}`}
+            >
+              <div className="flex items-center gap-2.5">
+                <div className={`h-8 w-8 rounded-full ${iconClass}`} />
+                <div className="flex-1 space-y-1.5">
+                  <div
+                    className={`h-2.5 rounded-full ${titleClass} ${
+                      index === 0 ? "w-16" : index === 1 ? "w-20" : "w-14"
+                    }`}
+                  />
+                  <div
+                    className={`h-2 rounded-full ${lineClass} ${
+                      index === 0 ? "w-24" : index === 1 ? "w-20" : "w-28"
+                    }`}
+                  />
+                </div>
+                <div className={`h-6 rounded-full ${chipClass} ${width}`} />
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+      );
 
-          {includeStepper && (
-            <div className="mt-4 flex gap-2">
-              {[0, 1, 2].map((step) => (
+      const renderSurfaceContent = () => {
+        switch (variant) {
+          case "orders":
+            return (
+              <>
+                <div className={`mt-4 rounded-[1.15rem] border ${heroClass} p-3.5`}>
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className={`text-[9px] font-semibold uppercase tracking-[0.18em] ${metaTextClass}`}>
+                        Orders
+                      </p>
+                      <p className={`mt-1 text-[12px] font-semibold ${headingTextClass}`}>
+                        Recent activity
+                      </p>
+                    </div>
+                    <span className={`rounded-full px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.16em] ${pillClass}`}>
+                      Today
+                    </span>
+                  </div>
+                  {renderOrderRows(["w-12", "w-10", "w-14"])}
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-2.5">
+                  <div className={`rounded-[0.95rem] p-3 ${previewMutedSurfaceClass}`}>
+                    <p className={`text-[8px] font-semibold uppercase tracking-[0.16em] ${metaTextClass}`}>
+                      Queued
+                    </p>
+                    <div className={`mt-2 h-3 w-10 rounded-full ${titleClass}`} />
+                  </div>
+                  <div className={`rounded-[0.95rem] p-3 ${previewMutedSurfaceClass}`}>
+                    <p className={`text-[8px] font-semibold uppercase tracking-[0.16em] ${metaTextClass}`}>
+                      Delivered
+                    </p>
+                    <div className={`mt-2 h-3 w-12 rounded-full ${titleClass}`} />
+                  </div>
+                </div>
+              </>
+            );
+
+          case "order-detail":
+            return (
+              <>
+                <div className={`mt-4 overflow-hidden rounded-[1.15rem] border ${heroClass}`}>
+                  <div className="h-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03))]" />
+                  <div className="space-y-3 p-3.5">
+                    <div>
+                      <p className={`text-[9px] font-semibold uppercase tracking-[0.18em] ${metaTextClass}`}>
+                        Order #1842
+                      </p>
+                      <p className={`mt-1 text-[12px] font-semibold ${headingTextClass}`}>
+                        Delivery details
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className={`rounded-[0.95rem] p-2.5 ${previewMutedSurfaceClass}`}>
+                        <div className={`h-2.5 w-12 rounded-full ${titleClass}`} />
+                        <div className={`mt-2 h-2 w-16 rounded-full ${lineClass}`} />
+                      </div>
+                      <div className={`rounded-[0.95rem] p-2.5 ${previewMutedSurfaceClass}`}>
+                        <div className={`h-2.5 w-10 rounded-full ${titleClass}`} />
+                        <div className={`mt-2 h-2 w-14 rounded-full ${lineClass}`} />
+                      </div>
+                    </div>
+                    <div className={`rounded-[0.95rem] p-2.5 ${previewMutedSurfaceClass}`}>
+                      <div className="flex items-center justify-between gap-3">
+                        <div>
+                          <div className={`h-2.5 w-16 rounded-full ${titleClass}`} />
+                          <div className={`mt-2 h-2 w-20 rounded-full ${lineClass}`} />
+                        </div>
+                        <div className={`h-8 w-10 rounded-[0.8rem] ${chipClass}`} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-2.5">
+                  {[
+                    ["w-24", "w-full"],
+                    ["w-20", "w-5/6"],
+                  ].map(([headingWidth, lineWidth], index) => (
+                    <div
+                      key={`${variant}-detail-${index}`}
+                      className={`rounded-[1rem] p-3 ${previewMutedSurfaceClass}`}
+                    >
+                      <div className={`h-2.5 rounded-full ${titleClass} ${headingWidth}`} />
+                      <div className={`mt-2 h-2 rounded-full ${lineClass} ${lineWidth}`} />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-2.5">
+                  <div className={`rounded-[0.95rem] px-3 py-3 ${previewMutedSurfaceClass}`}>
+                    <div className={`h-2.5 w-14 rounded-full ${titleClass}`} />
+                    <div className={`mt-2 h-2 w-12 rounded-full ${lineClass}`} />
+                  </div>
+                  <div className={`rounded-[0.95rem] px-3 py-3 ${previewMutedSurfaceClass}`}>
+                    <div className={`h-2.5 w-16 rounded-full ${titleClass}`} />
+                    <div className={`mt-2 h-2 w-10 rounded-full ${lineClass}`} />
+                  </div>
+                </div>
+              </>
+            );
+
+          case "discover":
+            return (
+              <>
+                <div className={`mt-4 rounded-[1rem] px-3 py-3 ${previewMutedSurfaceClass}`}>
+                  <div className="flex items-center gap-2.5">
+                    <div className={`h-8 w-8 rounded-full ${iconClass}`} />
+                    <div className="flex-1">
+                      <div className={`h-2.5 w-20 rounded-full ${titleClass}`} />
+                      <div className={`mt-2 h-2 w-24 rounded-full ${lineClass}`} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-3 flex gap-2">
+                  {[
+                    "w-12",
+                    "w-14",
+                    "w-10",
+                  ].map((width, index) => (
+                    <div
+                      key={`${variant}-chip-${index}`}
+                      className={`h-6 rounded-full ${chipClass} ${width}`}
+                    />
+                  ))}
+                </div>
+
+                <div className={`mt-4 rounded-[1.15rem] border ${heroClass} p-3.5`}>
+                  <p className={`text-[9px] font-semibold uppercase tracking-[0.18em] ${metaTextClass}`}>
+                    Discover
+                  </p>
+                  <p className={`mt-1 text-[12px] font-semibold ${headingTextClass}`}>
+                    Nearby spots
+                  </p>
+                  <div className="mt-3 grid grid-cols-2 gap-2.5">
+                    {[0, 1].map((index) => (
+                      <div
+                        key={`${variant}-card-${index}`}
+                        className={`rounded-[1rem] p-2.5 ${previewMutedSurfaceClass}`}
+                      >
+                        <div className={`h-14 rounded-[0.8rem] ${statClass}`} />
+                        <div className={`mt-2.5 h-2.5 rounded-full ${titleClass} ${index === 0 ? "w-16" : "w-14"}`} />
+                        <div className={`mt-2 h-2 rounded-full ${lineClass} ${index === 0 ? "w-10" : "w-12"}`} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`mt-4 rounded-[0.95rem] p-3 ${previewMutedSurfaceClass}`}>
+                  <div className="flex items-center gap-2.5">
+                    <div className={`h-8 w-8 rounded-full ${iconClass}`} />
+                    <div className="flex-1 space-y-1.5">
+                      <div className={`h-2.5 w-20 rounded-full ${titleClass}`} />
+                      <div className={`h-2 w-24 rounded-full ${lineClass}`} />
+                    </div>
+                    <div className={`h-6 w-10 rounded-full ${chipClass}`} />
+                  </div>
+                </div>
+              </>
+            );
+
+          case "saved":
+            return (
+              <>
+                <div className={`mt-4 rounded-[1.15rem] border ${heroClass} p-3.5`}>
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className={`text-[9px] font-semibold uppercase tracking-[0.18em] ${metaTextClass}`}>
+                        Saved
+                      </p>
+                      <p className={`mt-1 text-[12px] font-semibold ${headingTextClass}`}>
+                        Weekend list
+                      </p>
+                    </div>
+                    <span className={`rounded-full px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.16em] ${pillClass}`}>
+                      12 spots
+                    </span>
+                  </div>
+
+                  <div className={`mt-3 rounded-[1rem] p-3 ${previewMutedSurfaceClass}`}>
+                    <div className={`h-16 rounded-[0.9rem] ${statClass}`} />
+                    <div className={`mt-3 h-2.5 w-20 rounded-full ${titleClass}`} />
+                    <div className={`mt-2 h-2 w-full rounded-full ${lineClass}`} />
+                    <div className={`mt-2 h-2 w-4/5 rounded-full ${lineClass}`} />
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-2.5">
+                  {["w-24", "w-16"].map((width, index) => (
+                    <div
+                      key={`${variant}-row-${index}`}
+                      className={`rounded-[1rem] p-2.5 ${previewMutedSurfaceClass}`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div className={`h-8 w-8 rounded-[0.9rem] ${iconClass}`} />
+                        <div className="flex-1 space-y-1.5">
+                          <div className={`h-2.5 rounded-full ${titleClass} ${width}`} />
+                          <div className={`h-2 rounded-full ${lineClass} ${index === 0 ? "w-20" : "w-24"}`} />
+                        </div>
+                        <div className={`h-6 w-6 rounded-full ${chipClass}`} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            );
+
+          case "wizard-contact":
+            return (
+              <>
+                <div className={`mt-4 rounded-[1.15rem] border ${heroClass} p-3.5`}>
+                  <p className={`text-[9px] font-semibold uppercase tracking-[0.18em] ${metaTextClass}`}>
+                    Checkout
+                  </p>
+                  <p className={`mt-1 text-[12px] font-semibold ${headingTextClass}`}>
+                    Contact details
+                  </p>
+                  <div className="mt-3 space-y-2.5">
+                    {["w-10", "w-14", "w-12"].map((labelWidth, index) => (
+                      <div key={`${variant}-field-${index}`} className="space-y-1.5">
+                        <div className={`h-2 rounded-full ${titleClass} ${labelWidth}`} />
+                        <div className={`h-10 rounded-[0.95rem] ${previewMutedSurfaceClass}`} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`mt-4 rounded-[0.95rem] px-3 py-3 ${previewMutedSurfaceClass}`}>
+                  <div className={`h-2.5 w-16 rounded-full ${titleClass}`} />
+                </div>
+              </>
+            );
+
+          case "wizard-payment":
+            return (
+              <>
+                <div className={`mt-4 rounded-[1.15rem] border ${heroClass} p-3.5`}>
+                  <p className={`text-[9px] font-semibold uppercase tracking-[0.18em] ${metaTextClass}`}>
+                    Checkout
+                  </p>
+                  <p className={`mt-1 text-[12px] font-semibold ${headingTextClass}`}>
+                    Payment review
+                  </p>
+
+                  <div className={`mt-3 rounded-[1rem] p-3 ${previewMutedSurfaceClass}`}>
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <div className={`h-2.5 w-14 rounded-full ${titleClass}`} />
+                        <div className={`mt-2 h-2 w-16 rounded-full ${lineClass}`} />
+                      </div>
+                      <div className={`h-8 w-12 rounded-[0.8rem] ${chipClass}`} />
+                    </div>
+                  </div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-2.5">
+                    <div className={`rounded-[0.95rem] p-2.5 ${previewMutedSurfaceClass}`}>
+                      <div className={`h-2.5 w-10 rounded-full ${titleClass}`} />
+                      <div className={`mt-2 h-2 w-12 rounded-full ${lineClass}`} />
+                    </div>
+                    <div className={`rounded-[0.95rem] p-2.5 ${previewMutedSurfaceClass}`}>
+                      <div className={`h-2.5 w-12 rounded-full ${titleClass}`} />
+                      <div className={`mt-2 h-2 w-14 rounded-full ${lineClass}`} />
+                    </div>
+                  </div>
+
+                  <div className={`mt-3 rounded-[0.95rem] p-2.5 ${previewMutedSurfaceClass}`}>
+                    <div className={`h-2.5 w-16 rounded-full ${titleClass}`} />
+                    <div className={`mt-2 h-2 w-full rounded-full ${lineClass}`} />
+                  </div>
+                </div>
+
+                <div className={`mt-4 rounded-[0.95rem] px-3 py-3 ${previewMutedSurfaceClass}`}>
+                  <div className={`h-2.5 w-20 rounded-full ${titleClass}`} />
+                </div>
+              </>
+            );
+        }
+      };
+
+      return (
+        <div
+          className={`relative h-full w-full overflow-hidden rounded-[1.35rem] border ${frameBorderClass} ${surfaceBgClass} shadow-[0_18px_36px_rgba(0,0,0,0.36)]`}
+        >
+          <div className={`absolute inset-x-0 top-0 h-24 ${surfaceGlowClass}`} />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0))]" />
+          <div
+            className={`relative flex h-full flex-col ${previewCardPaddingClass}`}
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className={`rounded-[1rem] border border-white/8 ${chipClass} ${
+                  isSmall ? "h-10 w-10" : "h-12 w-12"
+                }`}
+              />
+              <div className="flex-1 space-y-2">
                 <div
-                  key={step}
-                  className={`h-1.5 flex-1 rounded-full ${
-                    step === 0
-                      ? previewAccentSolidClass
-                      : step === 1
-                        ? "bg-[#E7C2A8]/42"
-                        : "bg-white/12"
+                  className={`h-3 rounded-full ${titleClass} ${
+                    isSmall ? "w-24" : "w-32"
                   }`}
                 />
-              ))}
-            </div>
-          )}
-
-          <div
-            className={`mt-4 rounded-[1.15rem] border ${heroClass} ${
-              isSmall ? "min-h-24" : "min-h-28"
-            }`}
-          />
-
-          <div className="mt-4 space-y-3">
-            {[0, 1, 2].map((item) => (
-              <div
-                key={item}
-                className={`rounded-[1rem] px-3 py-3 ${previewMutedSurfaceClass}`}
-              >
                 <div
-                  className={`h-2.5 rounded-full ${titleClass} w-2/5 mb-2`}
+                  className={`h-2 rounded-full ${lineClass} ${
+                    isSmall ? "w-32" : "w-40"
+                  }`}
                 />
-                <div
-                  className={`h-2 rounded-full ${lineClass} w-full mb-1.5`}
-                />
-                <div className={`h-2 rounded-full ${lineClass} w-3/4`} />
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div className="mt-auto grid grid-cols-2 gap-2.5 pt-3">
-            <div
-              className={`rounded-[0.95rem] border border-white/6 ${statClass} ${
-                isSmall ? "h-10" : "h-12"
-              }`}
-            />
-            <div
-              className={`rounded-[0.95rem] border border-white/6 ${statClass} ${
-                isSmall ? "h-10" : "h-12"
-              }`}
-            />
+            {showStepper && (
+              <div className="mt-4 flex gap-2">
+                {[0, 1, 2].map((step) => (
+                  <div
+                    key={step}
+                    className={`h-1.5 flex-1 rounded-full ${
+                      step === activeStep
+                        ? previewAccentSolidClass
+                        : step < activeStep
+                          ? previewAccentMediumClass
+                          : "bg-white/12"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {renderSurfaceContent()}
           </div>
         </div>
-      </div>
-    );
-  };
+      );
+    };
 
   const renderPhoneScaffold = () => (
     <>
@@ -554,18 +885,27 @@ export function AnimationPreview({
                     <motion.div
                       className="absolute inset-0"
                       initial={{ x: 0, opacity: 1 }}
-                      animate={{ x: "-18%", opacity: 0.4, scale: 0.97 }}
+                      animate={{ x: "-20%", opacity: 1, scale: 0.965 }}
                       transition={getSpringConfig()}
                     >
-                      {renderScreenSurface("muted")}
+                      <div className="relative h-full w-full">
+                        {renderScreenSurface({
+                          accent: "muted",
+                          variant: "orders",
+                        })}
+                        <div className="absolute inset-0 rounded-[1.35rem] bg-[linear-gradient(180deg,rgba(6,8,12,0.06),rgba(6,8,12,0.34))]" />
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="absolute inset-0"
-                      initial={{ x: "48%", opacity: 0.1, scale: 0.99 }}
+                      className="absolute inset-0 z-10"
+                      initial={{ x: "34%", opacity: 0.12, scale: 0.98 }}
                       animate={{ x: 0, opacity: 1, scale: 1 }}
                       transition={getSpringConfig()}
                     >
-                      {renderScreenSurface("primary")}
+                      {renderScreenSurface({
+                        accent: "primary",
+                        variant: "order-detail",
+                      })}
                     </motion.div>
                   </div>
                 )}
@@ -575,18 +915,31 @@ export function AnimationPreview({
                     <motion.div
                       className="absolute inset-0"
                       initial={{ x: 0, opacity: 0.95 }}
-                      animate={{ x: "-14%", opacity: 0.3, scale: 0.98 }}
+                      animate={{ x: "-15%", opacity: 1, scale: 0.97 }}
                       transition={getSpringConfig()}
                     >
-                      {renderScreenSurface("muted", true)}
+                      <div className="relative h-full w-full">
+                        {renderScreenSurface({
+                          accent: "muted",
+                          variant: "wizard-contact",
+                          showStepper: true,
+                          activeStep: 0,
+                        })}
+                        <div className="absolute inset-0 rounded-[1.35rem] bg-[linear-gradient(180deg,rgba(7,10,15,0.08),rgba(7,10,15,0.3))]" />
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="absolute inset-0"
-                      initial={{ x: "40%", opacity: 0.08, scale: 0.99 }}
+                      className="absolute inset-0 z-10"
+                      initial={{ x: "28%", opacity: 0.1, scale: 0.98 }}
                       animate={{ x: 0, opacity: 1, scale: 1 }}
                       transition={getSpringConfig()}
                     >
-                      {renderScreenSurface("primary", true)}
+                      {renderScreenSurface({
+                        accent: "primary",
+                        variant: "wizard-payment",
+                        showStepper: true,
+                        activeStep: 1,
+                      })}
                     </motion.div>
                   </div>
                 )}
@@ -596,18 +949,32 @@ export function AnimationPreview({
                     <motion.div
                       className="absolute inset-0"
                       initial={{ opacity: 1 }}
-                      animate={{ opacity: 0.22, scale: 0.985 }}
-                      transition={getTweenConfig()}
+                      animate={{ opacity: 1, scale: 0.992 }}
+                      transition={getTweenConfig(0, 0.82)}
                     >
-                      {renderScreenSurface("muted")}
+                      <div className="relative h-full w-full">
+                        {renderScreenSurface({
+                          accent: "muted",
+                          variant: "discover",
+                        })}
+                        <motion.div
+                          className="absolute inset-0 rounded-[1.35rem] bg-[linear-gradient(180deg,rgba(7,10,15,0.06),rgba(7,10,15,0.3))]"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={getTweenConfig(0.03, 0.6)}
+                        />
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="absolute inset-0"
-                      initial={{ opacity: 0, scale: 1.015 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={getTweenConfig()}
+                      className="absolute inset-0 z-10"
+                      initial={{ opacity: 0, scale: 1.02, y: 6 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={getTweenConfig(0.04, 0.86)}
                     >
-                      {renderScreenSurface("primary")}
+                      {renderScreenSurface({
+                        accent: "primary",
+                        variant: "saved",
+                      })}
                     </motion.div>
                   </div>
                 )}
