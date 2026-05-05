@@ -398,14 +398,14 @@ export function AnimationPreview({
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(173,198,255,0.12),_transparent_42%)] rounded-[2rem]" />
 
       <div
-        className={`relative ${deviceFrameClass} rounded-[2rem] bg-[#07080a] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.45)] overflow-hidden`}
+        className={`${deviceFrameClass} rounded-[2rem] bg-[#07080a] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.45)] overflow-hidden`}
       >
         <div className="absolute inset-[2px] rounded-[1.9rem] bg-[#111318]" />
         <div
           className={`absolute left-1/2 top-2 z-20 h-1.5 ${isSmall ? "w-12" : "w-16"} -translate-x-1/2 rounded-full bg-black/45`}
         />
         <div
-          className={`${deviceViewportClass} relative overflow-hidden bg-[linear-gradient(180deg,#15181d_0%,#0d1014_100%)] flex items-center justify-center`}
+          className={`${deviceViewportClass} overflow-hidden bg-[linear-gradient(180deg,#15181d_0%,#0d1014_100%)] flex items-center justify-center`}
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(173,198,255,0.1),_transparent_52%)]" />
           <div className="absolute inset-x-0 top-0 h-8 bg-white/[0.025]" />
