@@ -2,22 +2,22 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
-    <footer className="border-t border-outline/20 bg-[linear-gradient(180deg,rgba(17,19,24,0.7),rgba(12,14,18,0.98))]">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="border-t border-outline/70 bg-[var(--editorial-band)]">
+      <div className="mx-auto max-w-7xl px-6 py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div className="max-w-xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary/16 border border-primary/18 flex items-center justify-center">
-                <span className="material-symbols-outlined text-primary">
-                  motion_mode
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-outline/70 bg-card">
+                <span className="material-symbols-outlined text-[var(--editorial-accent)]">
+                  architecture
                 </span>
               </div>
               <div>
-                <p className="text-sm uppercase tracking-[0.18em] text-primary/80">
+                <p className="text-sm uppercase tracking-[0.22em] text-[var(--editorial-accent)] font-semibold">
                   Motion Architect
                 </p>
                 <p className="text-sm text-on-surface-variant">
-                  UI motion reference library
+                  Editorial front page, system-led library
                 </p>
               </div>
             </div>
@@ -30,7 +30,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground mb-4">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground mb-4">
               Explore
             </h2>
             <div className="space-y-3 text-sm">
@@ -62,7 +62,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground mb-4">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground mb-4">
               Company
             </h2>
             <div className="space-y-3 text-sm">
@@ -86,7 +86,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-outline/20 pt-5 text-xs text-on-surface-variant md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-outline/70 pt-5 text-xs text-on-surface-variant md:flex-row md:items-center md:justify-between">
           <p>
             © 2026 Motion Architect. Reference material for product and
             front-end teams.

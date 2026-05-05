@@ -28,73 +28,89 @@ export function PatternGalleryPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-12"
-        >
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/')}
-            className="mb-6"
+      <section className="border-b border-outline/70">
+        <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end"
           >
-            <span className="material-symbols-outlined mr-2">arrow_back</span>
-            Back
-          </Button>
-
-          <div className="flex items-center gap-4 mb-4">
-            <div className="p-4 rounded-xl bg-primary/10">
-              <span className="material-symbols-outlined text-primary text-4xl">
-                {intent.icon}
-              </span>
-            </div>
             <div>
-              <h1 className="text-4xl font-bold text-foreground">
+              <Button
+                variant="ghost"
+                onClick={() => navigate('/')}
+                className="mb-8 rounded-full px-4 text-sm font-semibold"
+              >
+                <span className="material-symbols-outlined mr-2">arrow_back</span>
+                Back
+              </Button>
+
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--editorial-accent)]">
+                Intent category
+              </p>
+              <h1 className="mt-4 text-5xl font-bold tracking-tight text-foreground md:text-6xl">
                 {intent.name}
               </h1>
-              <p className="text-lg text-on-surface-variant mt-2">
-                {intent.description}
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-on-surface-variant">
+                {intent.description}. Review the patterns below as a working shortlist rather than a generic gallery.
               </p>
             </div>
-          </div>
 
-          <p className="text-sm text-muted-foreground">
-            {patterns.length} {patterns.length === 1 ? 'pattern' : 'patterns'} available
-          </p>
-        </motion.div>
+            <div className="rounded-[2rem] border border-outline/70 bg-card p-6 shadow-[0_18px_40px_rgba(30,28,24,0.06)]">
+              <div className="flex items-center gap-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-[1.5rem] border border-outline/70 bg-[var(--editorial-panel)]">
+                  <span className="material-symbols-outlined text-[var(--editorial-accent)] text-[2rem]">
+                    {intent.icon}
+                  </span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--editorial-accent)]">
+                    {patterns.length} {patterns.length === 1 ? 'pattern' : 'patterns'}
+                  </p>
+                  <p className="mt-2 text-base leading-7 text-on-surface-variant">
+                    This view keeps one interaction family in focus so teams can compare fewer options with better context.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          {patterns.map((pattern, index) => (
+      <section className="bg-[var(--editorial-band)]">
+        <div className="mx-auto max-w-7xl px-6 py-12 md:py-14">
+          {patterns.length > 0 ? (
             <motion.div
-              key={pattern.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + index * 0.05 }}
+              className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
             >
-              <PatternCard
-                pattern={pattern}
-                isFavorite={isFavorite(pattern.id)}
-                onToggleFavorite={toggleFavorite}
-                onClick={() => navigate(`/pattern/${pattern.id}`)}
-              />
+              {patterns.map((pattern, index) => (
+                <motion.div
+                  key={pattern.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.26 + index * 0.04 }}
+                >
+                  <PatternCard
+                    pattern={pattern}
+                    isFavorite={isFavorite(pattern.id)}
+                    onToggleFavorite={toggleFavorite}
+                    onClick={() => navigate(`/pattern/${pattern.id}`)}
+                  />
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
-
-        {patterns.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-on-surface-variant">
-              No patterns found for this intent
-            </p>
-          </div>
-        )}
-      </div>
+          ) : (
+            <div className="rounded-[2rem] border border-outline/70 bg-background px-6 py-14 text-center shadow-[0_16px_36px_rgba(30,28,24,0.04)]">
+              <p className="text-lg text-on-surface-variant">
+                No patterns found for this intent
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   )
 }

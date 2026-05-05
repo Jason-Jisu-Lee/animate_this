@@ -100,6 +100,16 @@ const defaultTheme = {
       "2xl": "var(--radius-2xl)",
       full: "var(--radius-full)",
     },
+    keyframes: {
+      "click-pulse": {
+        "0%": { transform: "scale(1)", boxShadow: "0 0 0 0 rgba(var(--color-primary, 99 102 241) / 0.5)" },
+        "50%": { transform: "scale(0.95)", boxShadow: "0 0 0 6px rgba(var(--color-primary, 99 102 241) / 0)" },
+        "100%": { transform: "scale(1)", boxShadow: "0 0 0 0 rgba(var(--color-primary, 99 102 241) / 0)" },
+      },
+    },
+    animation: {
+      "click-pulse": "click-pulse 0.3s ease-out",
+    },
   },
   spacing: {
     px: "var(--size-px)",
