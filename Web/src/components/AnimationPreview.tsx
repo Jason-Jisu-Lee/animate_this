@@ -57,6 +57,20 @@ export function AnimationPreview({
   const swipeClass = isSmall ? "w-[94%]" : "w-[86%]";
   const cardExpansionInitialWidth = isSmall ? 88 : 132;
   const cardExpansionExpandedWidth = isSmall ? 152 : 320;
+  const previewAccentSolidClass = "bg-[#E7C2A8]";
+  const previewAccentStrongClass = "bg-[#E7C2A8]/55";
+  const previewAccentMediumClass = "bg-[#E7C2A8]/24";
+  const previewAccentSoftClass = "bg-[#E7C2A8]/16";
+  const previewAccentMutedClass = "bg-[#E7C2A8]/12";
+  const previewAccentBorderClass = "border-[#E7C2A8]/24";
+  const previewAccentBorderSoftClass = "border-[#E7C2A8]/18";
+  const previewMutedSurfaceClass = "border-white/10 bg-white/[0.06]";
+  const previewMutedLineClass = "bg-white/14";
+  const previewMutedTitleClass = "bg-white/38";
+  const previewHeroPrimaryClass =
+    "border-[#E7C2A8]/24 bg-[linear-gradient(135deg,rgba(231,194,168,0.24),rgba(231,194,168,0.08))]";
+  const previewHeroMutedClass =
+    "border-white/12 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05))]";
 
   useEffect(() => {
     if (!autoPlay) {
@@ -242,17 +256,20 @@ export function AnimationPreview({
   ) => {
     const heroClass =
       accent === "primary"
-        ? "border-primary/20 bg-[linear-gradient(135deg,rgba(173,198,255,0.24),rgba(173,198,255,0.05))]"
-        : "border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))]";
-    const titleClass = accent === "primary" ? "bg-primary/50" : "bg-white/35";
-    const lineClass = accent === "primary" ? "bg-primary/18" : "bg-white/10";
-    const chipClass = accent === "primary" ? "bg-primary/22" : "bg-white/12";
+        ? previewHeroPrimaryClass
+        : previewHeroMutedClass;
+    const titleClass =
+      accent === "primary" ? previewAccentStrongClass : previewMutedTitleClass;
+    const lineClass =
+      accent === "primary" ? previewAccentMediumClass : previewMutedLineClass;
+    const chipClass =
+      accent === "primary" ? previewAccentSoftClass : "bg-white/12";
     const statClass =
-      accent === "primary" ? "bg-primary/14" : "bg-white/[0.045]";
+      accent === "primary" ? previewAccentMutedClass : "bg-white/[0.06]";
 
     return (
-      <div className="relative h-full w-full overflow-hidden rounded-[1.35rem] border border-white/8 bg-[linear-gradient(180deg,#151922_0%,#0c1016_100%)] shadow-xl">
-        <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,_rgba(173,198,255,0.16),_transparent_74%)]" />
+      <div className="relative h-full w-full overflow-hidden rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,#171C24_0%,#0F131A_100%)] shadow-[0_18px_36px_rgba(0,0,0,0.36)]">
+        <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,_rgba(231,194,168,0.18),_transparent_74%)]" />
         <div
           className={`relative flex h-full flex-col ${previewCardPaddingClass}`}
         >
@@ -283,10 +300,10 @@ export function AnimationPreview({
                   key={step}
                   className={`h-1.5 flex-1 rounded-full ${
                     step === 0
-                      ? "bg-primary"
+                      ? previewAccentSolidClass
                       : step === 1
-                        ? "bg-primary/35"
-                        : "bg-white/10"
+                        ? "bg-[#E7C2A8]/42"
+                        : "bg-white/12"
                   }`}
                 />
               ))}
@@ -303,7 +320,7 @@ export function AnimationPreview({
             {[0, 1, 2].map((item) => (
               <div
                 key={item}
-                className="rounded-[1rem] border border-white/6 bg-white/[0.035] px-3 py-3"
+                className={`rounded-[1rem] px-3 py-3 ${previewMutedSurfaceClass}`}
               >
                 <div
                   className={`h-2.5 rounded-full ${titleClass} w-2/5 mb-2`}
@@ -362,10 +379,10 @@ export function AnimationPreview({
           {[0, 1, 2].map((item) => (
             <div key={item} className="flex flex-col items-center gap-1">
               <div
-                className={`rounded-full ${item === 1 ? "bg-primary/45" : "bg-white/12"} ${isSmall ? "w-5 h-1.5" : "w-6 h-1.5"}`}
+                className={`rounded-full ${item === 1 ? previewAccentStrongClass : "bg-white/12"} ${isSmall ? "w-5 h-1.5" : "w-6 h-1.5"}`}
               />
               <div
-                className={`rounded-full ${item === 1 ? "bg-primary/18" : "bg-white/8"} ${isSmall ? "w-7 h-1" : "w-8 h-1"}`}
+                className={`rounded-full ${item === 1 ? previewAccentMediumClass : "bg-white/8"} ${isSmall ? "w-7 h-1" : "w-8 h-1"}`}
               />
             </div>
           ))}
@@ -392,7 +409,7 @@ export function AnimationPreview({
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(173,198,255,0.1),_transparent_52%)]" />
           <div className="absolute inset-x-0 top-0 h-8 bg-white/[0.025]" />
-          <div className="absolute inset-x-5 bottom-3 h-10 rounded-full bg-primary/12 blur-2xl" />
+          <div className="absolute inset-x-5 bottom-3 h-10 rounded-full bg-[#E7C2A8]/14 blur-2xl" />
           {renderPhoneScaffold()}
 
           <AnimatePresence mode="wait">
@@ -912,16 +929,16 @@ export function AnimationPreview({
 
                 {pattern.id === "sticky-header" && (
                   <div
-                    className={`relative ${sceneClass} overflow-hidden rounded-[1.35rem] border border-primary/15 bg-[linear-gradient(180deg,#151922_0%,#0c1016_100%)] shadow-xl`}
+                    className={`relative ${sceneClass} overflow-hidden rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,#171C24_0%,#0F131A_100%)] shadow-[0_18px_36px_rgba(0,0,0,0.36)]`}
                   >
                     <motion.div
-                      className="absolute inset-x-0 top-0 border-b border-primary/15 bg-[linear-gradient(180deg,rgba(21,25,34,0.98),rgba(12,16,22,0.92))] px-4"
+                      className="absolute inset-x-0 top-0 border-b border-white/10 bg-[linear-gradient(180deg,rgba(23,28,36,0.98),rgba(15,19,26,0.92))] px-4"
                       initial={{ height: isSmall ? 72 : 84 }}
                       animate={{ height: isSmall ? 50 : 60 }}
                       transition={getSpringConfig()}
                     >
                       <div className="flex h-full items-end pb-3">
-                        <div className="h-3 w-24 rounded-full bg-primary/45" />
+                        <div className={`h-3 w-24 rounded-full ${previewAccentStrongClass}`} />
                       </div>
                     </motion.div>
                     <motion.div
@@ -930,10 +947,10 @@ export function AnimationPreview({
                       animate={{ y: -28 }}
                       transition={getTweenConfig(0.06, 1)}
                     >
-                      <div className="h-24 rounded-[1.15rem] border border-primary/18 bg-[linear-gradient(135deg,rgba(173,198,255,0.18),rgba(173,198,255,0.05))]" />
-                      <div className="h-12 rounded-[1rem] border border-white/6 bg-white/[0.04]" />
-                      <div className="h-12 rounded-[1rem] border border-white/6 bg-white/[0.04]" />
-                      <div className="h-12 rounded-[1rem] border border-white/6 bg-white/[0.04]" />
+                      <div className={`h-24 rounded-[1.15rem] border ${previewAccentBorderClass} ${previewHeroPrimaryClass}`} />
+                      <div className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`} />
+                      <div className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`} />
+                      <div className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`} />
                     </motion.div>
                   </div>
                 )}
