@@ -1,29 +1,29 @@
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { patterns, intents, searchPatterns, Intent } from '@/lib/patterns'
-import { PatternCard } from '@/components/PatternCard'
-import { useFavorites } from '@/hooks/use-favorites'
-import { Input } from '@/components/ui/input'
-import { cn } from '@/lib/utils'
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { patterns, intents, searchPatterns, Intent } from "@/lib/patterns";
+import { PatternCard } from "@/components/PatternCard";
+import { useFavorites } from "@/hooks/use-favorites";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 
 export function LibraryPage() {
-  const navigate = useNavigate()
-  const { toggleFavorite, isFavorite } = useFavorites()
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedIntent, setSelectedIntent] = useState<Intent | null>(null)
+  const navigate = useNavigate();
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedIntent, setSelectedIntent] = useState<Intent | null>(null);
 
   const filteredPatterns = (() => {
-    let results = searchQuery ? searchPatterns(searchQuery) : patterns
+    let results = searchQuery ? searchPatterns(searchQuery) : patterns;
 
     if (selectedIntent) {
-      results = results.filter(p => p.intent === selectedIntent)
+      results = results.filter((p) => p.intent === selectedIntent);
     }
 
-    return results
-  })()
+    return results;
+  })();
 
-  const activeIntent = intents.find((intent) => intent.id === selectedIntent)
+  const activeIntent = intents.find((intent) => intent.id === selectedIntent);
 
   return (
     <div className="min-h-screen bg-background">
@@ -40,33 +40,39 @@ export function LibraryPage() {
                 Pattern library
               </p>
               <h1 className="mt-4 max-w-4xl text-5xl font-bold tracking-tight text-foreground md:text-6xl">
-                Search the motion system like a working reference, not a gallery dump.
+                Search the motion system like a working reference, not a gallery
+                dump.
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-on-surface-variant">
-                Filter by intent, scan live previews, and move directly into the pattern that best fits the interaction you are designing.
+                Filter by intent, scan live previews, and move directly into the
+                pattern that best fits the interaction you are designing.
               </p>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {[
                   {
-                    label: 'Results',
-                    value: String(filteredPatterns.length).padStart(2, '0'),
+                    label: "Results",
+                    value: String(filteredPatterns.length).padStart(2, "0"),
                   },
                   {
-                    label: 'Intent families',
-                    value: String(intents.length).padStart(2, '0'),
+                    label: "Intent families",
+                    value: String(intents.length).padStart(2, "0"),
                   },
                   {
-                    label: 'Mode',
-                    value: activeIntent ? activeIntent.name : 'All',
+                    label: "Mode",
+                    value: activeIntent ? activeIntent.name : "All",
                   },
                 ].map((stat) => (
                   <div
                     key={stat.label}
                     className="border-y border-outline/70 py-4"
                   >
-                    <p className="text-3xl font-semibold text-foreground">{stat.value}</p>
-                    <p className="mt-2 text-sm text-on-surface-variant">{stat.label}</p>
+                    <p className="text-3xl font-semibold text-foreground">
+                      {stat.value}
+                    </p>
+                    <p className="mt-2 text-sm text-on-surface-variant">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -109,10 +115,10 @@ export function LibraryPage() {
                     type="button"
                     onClick={() => setSelectedIntent(null)}
                     className={cn(
-                      'rounded-full border border-outline/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors',
+                      "rounded-full border border-outline/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors",
                       selectedIntent === null
-                        ? 'border-foreground bg-foreground text-background'
-                        : 'bg-background text-foreground hover:bg-secondary',
+                        ? "border-foreground bg-foreground text-background"
+                        : "bg-background text-foreground hover:bg-secondary",
                     )}
                   >
                     All intents
@@ -123,10 +129,10 @@ export function LibraryPage() {
                       type="button"
                       onClick={() => setSelectedIntent(intent.id)}
                       className={cn(
-                        'inline-flex items-center gap-2 rounded-full border border-outline/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors',
+                        "inline-flex items-center gap-2 rounded-full border border-outline/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors",
                         selectedIntent === intent.id
-                          ? 'border-foreground bg-foreground text-background'
-                          : 'bg-background text-foreground hover:bg-secondary',
+                          ? "border-foreground bg-foreground text-background"
+                          : "bg-background text-foreground hover:bg-secondary",
                       )}
                     >
                       <span className="material-symbols-outlined text-[15px]">
@@ -144,12 +150,12 @@ export function LibraryPage() {
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
                     <div>
                       <p className="text-2xl font-semibold text-foreground">
-                        {activeIntent ? activeIntent.name : 'All patterns'}
+                        {activeIntent ? activeIntent.name : "All patterns"}
                       </p>
                       <p className="mt-2 text-sm leading-7 text-on-surface-variant">
                         {activeIntent
                           ? activeIntent.description
-                          : 'Search across the full motion catalog, then narrow by interaction family only when needed.'}
+                          : "Search across the full motion catalog, then narrow by interaction family only when needed."}
                       </p>
                     </div>
                     <div className="rounded-[1.25rem] border border-outline/70 bg-background p-4">
@@ -157,10 +163,11 @@ export function LibraryPage() {
                         Current query
                       </p>
                       <p className="mt-4 text-lg font-medium text-foreground">
-                        {searchQuery || 'No query applied'}
+                        {searchQuery || "No query applied"}
                       </p>
                       <p className="mt-2 text-sm text-on-surface-variant">
-                        {filteredPatterns.length} result{filteredPatterns.length === 1 ? '' : 's'} returned
+                        {filteredPatterns.length} result
+                        {filteredPatterns.length === 1 ? "" : "s"} returned
                       </p>
                     </div>
                   </div>
@@ -188,7 +195,8 @@ export function LibraryPage() {
               </h2>
             </div>
             <p className="max-w-2xl text-base leading-7 text-on-surface-variant">
-              Every card below includes a real preview snippet so the comparison stays practical instead of purely descriptive.
+              Every card below includes a real preview snippet so the comparison
+              stays practical instead of purely descriptive.
             </p>
           </motion.div>
 
@@ -225,7 +233,9 @@ export function LibraryPage() {
               <span className="material-symbols-outlined mb-4 block text-6xl text-on-surface-variant">
                 search_off
               </span>
-              <p className="text-2xl font-semibold text-foreground">No patterns found</p>
+              <p className="text-2xl font-semibold text-foreground">
+                No patterns found
+              </p>
               <p className="mt-3 text-base text-on-surface-variant">
                 Try widening the search or clearing the current intent filter.
               </p>
@@ -234,5 +244,5 @@ export function LibraryPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

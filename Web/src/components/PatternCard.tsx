@@ -50,7 +50,9 @@ export function PatternCard({
           <span
             className={cn(
               "material-symbols-outlined text-xl transition-all",
-              isFavorite ? "text-[var(--editorial-accent)]" : "text-on-surface-variant",
+              isFavorite
+                ? "text-[var(--editorial-accent)]"
+                : "text-on-surface-variant",
             )}
             style={{
               fontVariationSettings: isFavorite

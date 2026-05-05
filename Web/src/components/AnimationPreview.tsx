@@ -255,9 +255,7 @@ export function AnimationPreview({
     includeStepper = false,
   ) => {
     const heroClass =
-      accent === "primary"
-        ? previewHeroPrimaryClass
-        : previewHeroMutedClass;
+      accent === "primary" ? previewHeroPrimaryClass : previewHeroMutedClass;
     const titleClass =
       accent === "primary" ? previewAccentStrongClass : previewMutedTitleClass;
     const lineClass =
@@ -938,7 +936,9 @@ export function AnimationPreview({
                       transition={getSpringConfig()}
                     >
                       <div className="flex h-full items-end pb-3">
-                        <div className={`h-3 w-24 rounded-full ${previewAccentStrongClass}`} />
+                        <div
+                          className={`h-3 w-24 rounded-full ${previewAccentStrongClass}`}
+                        />
                       </div>
                     </motion.div>
                     <motion.div
@@ -947,10 +947,18 @@ export function AnimationPreview({
                       animate={{ y: -28 }}
                       transition={getTweenConfig(0.06, 1)}
                     >
-                      <div className={`h-24 rounded-[1.15rem] border ${previewAccentBorderClass} ${previewHeroPrimaryClass}`} />
-                      <div className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`} />
-                      <div className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`} />
-                      <div className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`} />
+                      <div
+                        className={`h-24 rounded-[1.15rem] border ${previewAccentBorderClass} ${previewHeroPrimaryClass}`}
+                      />
+                      <div
+                        className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`}
+                      />
+                      <div
+                        className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`}
+                      />
+                      <div
+                        className={`h-12 rounded-[1rem] ${previewMutedSurfaceClass}`}
+                      />
                     </motion.div>
                   </div>
                 )}

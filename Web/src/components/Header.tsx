@@ -23,7 +23,9 @@ export function Header() {
             </span>
           </div>
           <div>
-            <p className="text-lg font-bold text-foreground">Motion Architect</p>
+            <p className="text-lg font-bold text-foreground">
+              Motion Architect
+            </p>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
               System reference
             </p>

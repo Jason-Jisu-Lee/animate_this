@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { getPatternById, intents, patterns, type Pattern } from "@/lib/patterns";
+import {
+  getPatternById,
+  intents,
+  patterns,
+  type Pattern,
+} from "@/lib/patterns";
 import { AnimationPreview } from "@/components/AnimationPreview";
 import { useFavorites } from "@/hooks/use-favorites";
 import { Button } from "@/components/ui/button";
@@ -96,7 +101,9 @@ export function PatternDetailPage() {
                 onClick={handleBack}
                 className="mb-8 rounded-full px-4 text-sm font-semibold"
               >
-                <span className="material-symbols-outlined mr-2">arrow_back</span>
+                <span className="material-symbols-outlined mr-2">
+                  arrow_back
+                </span>
                 Back
               </Button>
 
@@ -114,16 +121,24 @@ export function PatternDetailPage() {
                 <span className="rounded-full border border-outline/70 bg-secondary px-4 py-2 text-sm font-medium text-foreground">
                   {intent?.name ?? pattern.intent}
                 </span>
-                <Badge variant="outline" className="rounded-full border-outline/70 bg-background px-4 py-2 text-sm font-medium">
+                <Badge
+                  variant="outline"
+                  className="rounded-full border-outline/70 bg-background px-4 py-2 text-sm font-medium"
+                >
                   {pattern.driver}
                 </Badge>
                 <span className="rounded-full border border-outline/70 bg-background px-4 py-2 text-sm font-medium text-on-surface-variant">
-                  {pattern.primitives.length} animated primitive{pattern.primitives.length === 1 ? '' : 's'}
+                  {pattern.primitives.length} animated primitive
+                  {pattern.primitives.length === 1 ? "" : "s"}
                 </span>
               </div>
 
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button onClick={handleCopySpec} size="lg" className="rounded-full px-6">
+                <Button
+                  onClick={handleCopySpec}
+                  size="lg"
+                  className="rounded-full px-6"
+                >
                   <span className="material-symbols-outlined mr-2">
                     content_copy
                   </span>
@@ -138,7 +153,8 @@ export function PatternDetailPage() {
                   <span
                     className={cn(
                       "material-symbols-outlined mr-2",
-                      isFavorite(pattern.id) && "text-[var(--editorial-accent)]",
+                      isFavorite(pattern.id) &&
+                        "text-[var(--editorial-accent)]",
                     )}
                     style={{
                       fontVariationSettings: isFavorite(pattern.id)
@@ -204,7 +220,11 @@ export function PatternDetailPage() {
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {pattern.primitives.map((primitive) => (
-                <Badge key={primitive} variant="outline" className="rounded-full border-outline/70 bg-background px-4 py-2 text-sm font-medium">
+                <Badge
+                  key={primitive}
+                  variant="outline"
+                  className="rounded-full border-outline/70 bg-background px-4 py-2 text-sm font-medium"
+                >
                   {primitive}
                 </Badge>
               ))}
@@ -221,7 +241,9 @@ export function PatternDetailPage() {
                 Interaction brief
               </p>
               <p className="mt-4 text-base leading-8 text-on-surface-variant">
-                Use this pattern when the product needs a motion response that supports {intent?.name.toLowerCase() ?? pattern.intent} without forcing the team to invent the timing from scratch.
+                Use this pattern when the product needs a motion response that
+                supports {intent?.name.toLowerCase() ?? pattern.intent} without
+                forcing the team to invent the timing from scratch.
               </p>
             </div>
 
@@ -241,11 +263,14 @@ export function PatternDetailPage() {
                           Step {index + 1}
                         </p>
                         <p className="mt-2 text-sm leading-7 text-on-surface-variant">
-                          {step.primitives.join(', ')}
-                          {step.delay ? ` • ${step.delay}s delay` : ''}
+                          {step.primitives.join(", ")}
+                          {step.delay ? ` • ${step.delay}s delay` : ""}
                         </p>
                       </div>
-                      <Badge variant="outline" className="rounded-full border-outline/70 bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]">
+                      <Badge
+                        variant="outline"
+                        className="rounded-full border-outline/70 bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em]"
+                      >
                         {step.timing.type}
                       </Badge>
                     </div>
@@ -265,7 +290,11 @@ export function PatternDetailPage() {
                   Copy-ready configuration.
                 </h2>
               </div>
-              <Button onClick={handleCopySpec} variant="outline" className="rounded-full px-5">
+              <Button
+                onClick={handleCopySpec}
+                variant="outline"
+                className="rounded-full px-5"
+              >
                 Copy JSON
               </Button>
             </div>
@@ -290,7 +319,8 @@ export function PatternDetailPage() {
                 </h2>
               </div>
               <p className="max-w-2xl text-base leading-7 text-on-surface-variant">
-                These patterns solve adjacent interaction problems and are worth checking before you finalize the motion spec.
+                These patterns solve adjacent interaction problems and are worth
+                checking before you finalize the motion spec.
               </p>
             </div>
 
@@ -302,7 +332,7 @@ export function PatternDetailPage() {
                   className="group grid gap-4 rounded-[1.75rem] border border-outline/70 bg-[var(--editorial-band)] px-6 py-5 transition-colors hover:bg-card md:grid-cols-[72px_minmax(0,1fr)_auto] md:items-start"
                 >
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--editorial-accent)]">
-                    {String(index + 1).padStart(2, '0')}
+                    {String(index + 1).padStart(2, "0")}
                   </p>
                   <div>
                     <h3 className="text-2xl font-semibold text-foreground transition-colors group-hover:text-[var(--editorial-accent)]">
@@ -313,7 +343,7 @@ export function PatternDetailPage() {
                     </p>
                   </div>
                   <div className="flex items-center gap-3 text-sm font-semibold text-foreground md:justify-end">
-                    <span>{relatedPattern.primitives.join(' • ')}</span>
+                    <span>{relatedPattern.primitives.join(" • ")}</span>
                     <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">
                       arrow_forward
                     </span>

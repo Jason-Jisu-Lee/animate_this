@@ -10,7 +10,7 @@ try {
     theme = JSON.parse(fs.readFileSync(themePath, "utf-8"));
   }
 } catch (err) {
-  console.error('failed to parse custom styles', err)
+  console.error("failed to parse custom styles", err);
 }
 const defaultTheme = {
   container: {
@@ -102,9 +102,18 @@ const defaultTheme = {
     },
     keyframes: {
       "click-pulse": {
-        "0%": { transform: "scale(1)", boxShadow: "0 0 0 0 rgba(var(--color-primary, 99 102 241) / 0.5)" },
-        "50%": { transform: "scale(0.95)", boxShadow: "0 0 0 6px rgba(var(--color-primary, 99 102 241) / 0)" },
-        "100%": { transform: "scale(1)", boxShadow: "0 0 0 0 rgba(var(--color-primary, 99 102 241) / 0)" },
+        "0%": {
+          transform: "scale(1)",
+          boxShadow: "0 0 0 0 rgba(var(--color-primary, 99 102 241) / 0.5)",
+        },
+        "50%": {
+          transform: "scale(0.95)",
+          boxShadow: "0 0 0 6px rgba(var(--color-primary, 99 102 241) / 0)",
+        },
+        "100%": {
+          transform: "scale(1)",
+          boxShadow: "0 0 0 0 rgba(var(--color-primary, 99 102 241) / 0)",
+        },
       },
     },
     animation: {
@@ -149,7 +158,7 @@ const defaultTheme = {
     96: "var(--size-96)",
   },
   darkMode: ["selector", '[data-appearance="dark"]'],
-}
+};
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],

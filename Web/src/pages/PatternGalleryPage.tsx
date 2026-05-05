@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion'
-import { useParams, useNavigate, Link } from 'react-router-dom'
-import { getPatternsByIntent, intents } from '@/lib/patterns'
-import { PatternCard } from '@/components/PatternCard'
-import { useFavorites } from '@/hooks/use-favorites'
-import { Button } from '@/components/ui/button'
+import { motion } from "framer-motion";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { getPatternsByIntent, intents } from "@/lib/patterns";
+import { PatternCard } from "@/components/PatternCard";
+import { useFavorites } from "@/hooks/use-favorites";
+import { Button } from "@/components/ui/button";
 
 export function PatternGalleryPage() {
-  const { intentId } = useParams<{ intentId: string }>()
-  const navigate = useNavigate()
-  const { toggleFavorite, isFavorite } = useFavorites()
+  const { intentId } = useParams<{ intentId: string }>();
+  const navigate = useNavigate();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
-  const intent = intents.find(i => i.id === intentId)
-  const patterns = intentId ? getPatternsByIntent(intentId as any) : []
+  const intent = intents.find((i) => i.id === intentId);
+  const patterns = intentId ? getPatternsByIntent(intentId as any) : [];
 
   if (!intent) {
     return (
@@ -23,7 +23,7 @@ export function PatternGalleryPage() {
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -38,10 +38,12 @@ export function PatternGalleryPage() {
             <div>
               <Button
                 variant="ghost"
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 className="mb-8 rounded-full px-4 text-sm font-semibold"
               >
-                <span className="material-symbols-outlined mr-2">arrow_back</span>
+                <span className="material-symbols-outlined mr-2">
+                  arrow_back
+                </span>
                 Back
               </Button>
 
@@ -52,7 +54,8 @@ export function PatternGalleryPage() {
                 {intent.name}
               </h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-on-surface-variant">
-                {intent.description}. Review the patterns below as a working shortlist rather than a generic gallery.
+                {intent.description}. Review the patterns below as a working
+                shortlist rather than a generic gallery.
               </p>
             </div>
 
@@ -65,10 +68,12 @@ export function PatternGalleryPage() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--editorial-accent)]">
-                    {patterns.length} {patterns.length === 1 ? 'pattern' : 'patterns'}
+                    {patterns.length}{" "}
+                    {patterns.length === 1 ? "pattern" : "patterns"}
                   </p>
                   <p className="mt-2 text-base leading-7 text-on-surface-variant">
-                    This view keeps one interaction family in focus so teams can compare fewer options with better context.
+                    This view keeps one interaction family in focus so teams can
+                    compare fewer options with better context.
                   </p>
                 </div>
               </div>
@@ -112,5 +117,5 @@ export function PatternGalleryPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

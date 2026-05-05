@@ -22,23 +22,21 @@ function WorkflowFrame({
   if (variant === 0) {
     return (
       <div className="grid gap-3 sm:grid-cols-3">
-        {[
-          "Screen changes",
-          "Loading states",
-          "Form success",
-        ].map((item, index) => (
-          <div
-            key={item}
-            className="rounded-[1.25rem] border border-outline/70 bg-background p-4"
-          >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--editorial-accent)]">
-              0{index + 1}
-            </p>
-            <p className="mt-8 text-sm font-medium text-foreground">{item}</p>
-            <div className="mt-4 h-2 w-16 rounded-full bg-[var(--editorial-accent-soft)]" />
-            <div className="mt-2 h-2 w-24 rounded-full bg-secondary" />
-          </div>
-        ))}
+        {["Screen changes", "Loading states", "Form success"].map(
+          (item, index) => (
+            <div
+              key={item}
+              className="rounded-[1.25rem] border border-outline/70 bg-background p-4"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--editorial-accent)]">
+                0{index + 1}
+              </p>
+              <p className="mt-8 text-sm font-medium text-foreground">{item}</p>
+              <div className="mt-4 h-2 w-16 rounded-full bg-[var(--editorial-accent-soft)]" />
+              <div className="mt-2 h-2 w-24 rounded-full bg-secondary" />
+            </div>
+          ),
+        )}
       </div>
     );
   }
@@ -58,7 +56,9 @@ function WorkflowFrame({
             <div className="mt-4 rounded-[1rem] border border-outline/70 bg-[var(--editorial-panel)] p-3">
               <AnimationPreview pattern={pattern} size="small" />
             </div>
-            <p className="mt-4 text-sm font-medium text-foreground">{pattern.name}</p>
+            <p className="mt-4 text-sm font-medium text-foreground">
+              {pattern.name}
+            </p>
           </div>
         ))}
       </div>
@@ -98,7 +98,9 @@ export function HomePage() {
     .filter((pattern): pattern is Pattern => Boolean(pattern))
     .slice(0, 3);
 
-  const intentLabels = new Map(intents.map((intent) => [intent.id, intent.name]));
+  const intentLabels = new Map(
+    intents.map((intent) => [intent.id, intent.name]),
+  );
   const workflowBands = [
     {
       step: "01",
@@ -124,7 +126,9 @@ export function HomePage() {
       description:
         "The page should close by reinforcing implementation confidence with timing, primitives, and a clear path into detail views.",
       meta: "Real spec example included",
-      to: featuredPatterns[0] ? `/pattern/${featuredPatterns[0].id}` : "/library",
+      to: featuredPatterns[0]
+        ? `/pattern/${featuredPatterns[0].id}`
+        : "/library",
       cta: "Open a sample spec",
     },
   ];
@@ -328,7 +332,10 @@ export function HomePage() {
                   </div>
                 </div>
 
-                <WorkflowFrame variant={index} livePatterns={featuredPatterns} />
+                <WorkflowFrame
+                  variant={index}
+                  livePatterns={featuredPatterns}
+                />
               </motion.div>
             ))}
           </div>
@@ -486,8 +493,8 @@ export function HomePage() {
                   Ready to refine
                 </p>
                 <h2 className="mt-4 text-4xl font-semibold md:text-5xl">
-                  The new direction is live: warmer palette, editorial type,
-                  and a system-first landing page.
+                  The new direction is live: warmer palette, editorial type, and
+                  a system-first landing page.
                 </h2>
                 <p className="mt-4 max-w-3xl text-lg leading-8 text-primary-foreground/80">
                   If this is the right direction, the next pass should tighten

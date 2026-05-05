@@ -1,19 +1,32 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @layer base {
   * {
     @apply border-border;
   }
-  
+
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
     background-color: var(--background);
     color: var(--foreground);
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      "Manrope",
+      system-ui,
+      -apple-system,
+      sans-serif;
     letter-spacing: -0.04em;
   }
 }
@@ -24,22 +37,22 @@
 
   --card: oklch(0.992 0.004 84);
   --card-foreground: oklch(0.23 0.01 65);
-  
+
   --popover: oklch(0.992 0.004 84);
   --popover-foreground: oklch(0.23 0.01 65);
 
   --primary: oklch(0.23 0.01 65);
   --primary-foreground: oklch(0.988 0.004 84);
-  
+
   --secondary: oklch(0.953 0.01 80);
   --secondary-foreground: oklch(0.23 0.01 65);
-  
+
   --muted: oklch(0.953 0.01 80);
   --muted-foreground: oklch(0.5 0.02 68);
-  
+
   --accent: oklch(0.932 0.018 74);
   --accent-foreground: oklch(0.23 0.01 65);
-  
+
   --destructive: oklch(0.62 0.19 27);
   --destructive-foreground: oklch(0.988 0.004 84);
 
@@ -51,14 +64,14 @@
   --surface-2: oklch(0.976 0.008 82);
   --surface-3: oklch(0.952 0.01 80);
   --surface-4: oklch(0.92 0.01 78);
-  
+
   --primary-container: oklch(0.93 0.03 68);
   --on-surface-variant: oklch(0.5 0.02 68);
   --outline: oklch(0.74 0.01 76);
-  --editorial-accent: #A55A30;
-  --editorial-accent-soft: #F0E4D7;
-  --editorial-band: #F1ECE4;
-  --editorial-panel: #EFE7DA;
+  --editorial-accent: #a55a30;
+  --editorial-accent-soft: #f0e4d7;
+  --editorial-band: #f1ece4;
+  --editorial-panel: #efe7da;
 
   --radius: 0.75rem;
 }
@@ -83,7 +96,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  
+
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
@@ -99,12 +112,16 @@
   --radius-2xl: calc(var(--radius) * 3);
   --radius-full: 9999px;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Manrope", system-ui, -apple-system, sans-serif;
 }
 
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
   user-select: none;
 }
 
