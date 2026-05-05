@@ -3,17 +3,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { patterns, intents, searchPatterns, Intent } from "@/lib/patterns";
 import { PatternCard } from "@/components/PatternCard";
+import { PaywallBanner } from "@/components/PaywallBanner";
 import { useFavorites } from "@/hooks/use-favorites";
+import { useEntitlements } from "@/hooks/use-entitlements";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export function LibraryPage() {
   const navigate = useNavigate();
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { isPaid } = useEntitlements();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIntent, setSelectedIntent] = useState<Intent | null>(null);
 
-  const filteredPatterns = (() => {
+  const allFiltered = (() => {
     let results = searchQuery ? searchPatterns(searchQuery) : patterns;
 
     if (selectedIntent) {
@@ -22,6 +25,10 @@ export function LibraryPage() {
 
     return results;
   })();
+
+  const FREE_LIMIT = 6;
+  const filteredPatterns = isPaid ? allFiltered : allFiltered.slice(0, FREE_LIMIT);
+  const lockedCount = isPaid ? 0 : Math.max(0, allFiltered.length - FREE_LIMIT);
 
   const activeIntent = intents.find((intent) => intent.id === selectedIntent);
 
@@ -199,6 +206,19 @@ export function LibraryPage() {
               stays practical instead of purely descriptive.
             </p>
           </motion.div>
+
+          {!isPaid && (
+            <div className="mt-8">
+              <PaywallBanner
+                title={
+                  lockedCount > 0
+                    ? `${lockedCount} more patterns are locked on Free`
+                    : "You're on the Free plan"
+                }
+                body="Unlock the full pattern library, spec exports, compare mode, and team workspaces with Pro."
+              />
+            </div>
+          )}
 
           {filteredPatterns.length > 0 ? (
             <motion.div

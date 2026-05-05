@@ -3,6 +3,9 @@ import { Toaster } from "sonner";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./pages/HomePage";
+import { MarketingHomePage } from "./pages/MarketingHomePage";
+import { PricingPage } from "./pages/PricingPage";
+import { SignupPage } from "./pages/SignupPage";
 import { IntentSelectionPage } from "./pages/IntentSelectionPage";
 import { PatternGalleryPage } from "./pages/PatternGalleryPage";
 import { PatternDetailPage } from "./pages/PatternDetailPage";
@@ -19,7 +22,10 @@ function App() {
       <div className="min-h-screen bg-background text-foreground">
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<MarketingHomePage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/app" element={<HomePage />} />
           <Route path="/flow/intent" element={<IntentSelectionPage />} />
           <Route
             path="/flow/patterns/:intentId"
