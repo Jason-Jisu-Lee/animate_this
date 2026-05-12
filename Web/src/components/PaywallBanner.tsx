@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 interface PaywallBannerProps {
-  title?: string
-  body?: string
-  ctaLabel?: string
-  ctaHref?: string
+  title?: string;
+  body?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export function PaywallBanner({
@@ -26,5 +26,5 @@ export function PaywallBanner({
         {ctaLabel}
       </Link>
     </div>
-  )
+  );
 }

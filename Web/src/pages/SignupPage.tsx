@@ -1,14 +1,14 @@
-import { useMemo } from "react"
-import { Link, useSearchParams } from "react-router-dom"
-import { plans } from "@/lib/pricing"
+import { useMemo } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { plans } from "@/lib/pricing";
 
 export function SignupPage() {
-  const [params] = useSearchParams()
-  const planId = params.get("plan") ?? "pro"
+  const [params] = useSearchParams();
+  const planId = params.get("plan") ?? "pro";
   const plan = useMemo(
     () => plans.find((p) => p.id === planId) ?? plans[1],
     [planId],
-  )
+  );
 
   return (
     <div className="min-h-screen bg-[var(--editorial-panel)]">
@@ -27,8 +27,8 @@ export function SignupPage() {
           <form
             className="mt-8 space-y-4"
             onSubmit={(e) => {
-              e.preventDefault()
-              window.location.assign("/app")
+              e.preventDefault();
+              window.location.assign("/app");
             }}
           >
             <label className="block">
@@ -114,5 +114,5 @@ export function SignupPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

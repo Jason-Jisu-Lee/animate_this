@@ -27,7 +27,9 @@ export function LibraryPage() {
   })();
 
   const FREE_LIMIT = 6;
-  const filteredPatterns = isPaid ? allFiltered : allFiltered.slice(0, FREE_LIMIT);
+  const filteredPatterns = isPaid
+    ? allFiltered
+    : allFiltered.slice(0, FREE_LIMIT);
   const lockedCount = isPaid ? 0 : Math.max(0, allFiltered.length - FREE_LIMIT);
 
   const activeIntent = intents.find((intent) => intent.id === selectedIntent);

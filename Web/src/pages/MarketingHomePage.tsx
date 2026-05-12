@@ -1,19 +1,19 @@
-import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import { patterns, intents, type Pattern } from "@/lib/patterns"
-import { plans } from "@/lib/pricing"
-import { AnimationPreview } from "@/components/AnimationPreview"
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { patterns, intents, type Pattern } from "@/lib/patterns";
+import { plans } from "@/lib/pricing";
+import { AnimationPreview } from "@/components/AnimationPreview";
 
-const DEMO_IDS = ["page-slide", "modal-dialog", "stagger-list"] as const
+const DEMO_IDS = ["page-slide", "modal-dialog", "stagger-list"] as const;
 
 function pickPattern(id: string): Pattern | undefined {
-  return patterns.find((p) => p.id === id)
+  return patterns.find((p) => p.id === id);
 }
 
-const demoPatterns = DEMO_IDS.map(pickPattern).filter(
-  (p): p is Pattern => Boolean(p),
-)
+const demoPatterns = DEMO_IDS.map(pickPattern).filter((p): p is Pattern =>
+  Boolean(p),
+);
 
 const useCases = [
   {
@@ -31,14 +31,14 @@ const useCases = [
     headline: "Specs that compile, not screenshots that don't.",
     body: "Every pattern ships with timing values, primitives, and copy-ready snippets.",
   },
-]
+];
 
 const outputs = [
   "Live previews you can scrub",
   "Timing & easing values, not vibes",
   "JSON specs ready for handoff",
   "Framer Motion-compatible snippets",
-]
+];
 
 const faq = [
   {
@@ -53,11 +53,11 @@ const faq = [
     q: "Can my team share what we choose?",
     a: "Yes — Team plans give you a shared workspace with collections and motion standards everyone can pull from.",
   },
-]
+];
 
 export function MarketingHomePage() {
-  const [demoIndex, setDemoIndex] = useState(0)
-  const demoPattern = demoPatterns[demoIndex]
+  const [demoIndex, setDemoIndex] = useState(0);
+  const demoPattern = demoPatterns[demoIndex];
 
   return (
     <div className="min-h-screen bg-background">
@@ -187,7 +187,8 @@ export function MarketingHomePage() {
       <section className="border-b border-outline/70 bg-[var(--editorial-panel)]">
         <div className="mx-auto max-w-7xl px-6 py-8">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.32em] text-muted-foreground">
-            Built with patterns trusted at product teams shipping iOS, Android, and Web
+            Built with patterns trusted at product teams shipping iOS, Android,
+            and Web
           </p>
         </div>
       </section>
@@ -202,10 +203,10 @@ export function MarketingHomePage() {
             Motion in your product feels random because everyone is guessing.
           </h2>
           <p className="mt-6 text-lg leading-8 text-on-surface-variant">
-            Designers ship CodePens. Engineers ship vibes. Specs live in
-            Slack. Six months later you have eleven different page transitions
-            and nobody remembers why. Motion Architect replaces that with a
-            shared, decidable system.
+            Designers ship CodePens. Engineers ship vibes. Specs live in Slack.
+            Six months later you have eleven different page transitions and
+            nobody remembers why. Motion Architect replaces that with a shared,
+            decidable system.
           </p>
         </div>
       </section>
@@ -459,10 +460,11 @@ export function MarketingHomePage() {
             </Link>
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            {intents.length} intents · {patterns.length} patterns · one source of truth
+            {intents.length} intents · {patterns.length} patterns · one source
+            of truth
           </p>
         </div>
       </section>
     </div>
-  )
+  );
 }

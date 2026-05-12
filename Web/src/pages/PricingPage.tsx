@@ -1,9 +1,9 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { plans, pricingFAQ, type BillingCadence } from "@/lib/pricing"
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { plans, pricingFAQ, type BillingCadence } from "@/lib/pricing";
 
 export function PricingPage() {
-  const [cadence, setCadence] = useState<BillingCadence>("annual")
+  const [cadence, setCadence] = useState<BillingCadence>("annual");
 
   return (
     <div className="min-h-screen bg-background">
@@ -17,8 +17,8 @@ export function PricingPage() {
               One system. Three ways to use it.
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-on-surface-variant">
-              Start free. Go Pro when you ship real apps. Move to Team when
-              your motion stops being a one-person job.
+              Start free. Go Pro when you ship real apps. Move to Team when your
+              motion stops being a one-person job.
             </p>
 
             <div className="mt-8 inline-flex items-center rounded-full border border-outline/70 bg-card p-1">
@@ -48,7 +48,7 @@ export function PricingPage() {
           {/* Plan cards */}
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {plans.map((plan) => {
-              const price = cadence === "annual" ? plan.annual : plan.monthly
+              const price = cadence === "annual" ? plan.annual : plan.monthly;
               return (
                 <div
                   key={plan.id}
@@ -133,12 +133,13 @@ export function PricingPage() {
                     ))}
                   </ul>
                 </div>
-              )
+              );
             })}
           </div>
 
           <p className="mt-8 text-center text-xs text-muted-foreground">
-            All plans include 14-day free trial on Pro and Team · cancel anytime · prices in USD
+            All plans include 14-day free trial on Pro and Team · cancel anytime
+            · prices in USD
           </p>
         </div>
       </section>
@@ -210,5 +211,5 @@ export function PricingPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

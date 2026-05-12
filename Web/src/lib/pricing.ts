@@ -1,18 +1,18 @@
-export type BillingCadence = "monthly" | "annual"
+export type BillingCadence = "monthly" | "annual";
 
 export interface PricingPlan {
-  id: "free" | "pro" | "team"
-  name: string
-  tagline: string
-  monthly: number // USD per month
-  annual: number // USD per month when billed annually
-  seatsIncluded?: number
-  extraSeatPrice?: number // USD per extra seat per month
-  highlight?: boolean
-  ctaLabel: string
-  ctaHref: string
-  features: string[]
-  notIncluded?: string[]
+  id: "free" | "pro" | "team";
+  name: string;
+  tagline: string;
+  monthly: number; // USD per month
+  annual: number; // USD per month when billed annually
+  seatsIncluded?: number;
+  extraSeatPrice?: number; // USD per extra seat per month
+  highlight?: boolean;
+  ctaLabel: string;
+  ctaHref: string;
+  features: string[];
+  notIncluded?: string[];
 }
 
 export const plans: PricingPlan[] = [
@@ -72,7 +72,7 @@ export const plans: PricingPlan[] = [
       "+$8 / month per extra seat",
     ],
   },
-]
+];
 
 export const pricingFAQ = [
   {
@@ -95,4 +95,4 @@ export const pricingFAQ = [
     q: "Is there a free trial?",
     a: "Pro and Team include a 14-day free trial. No credit card required to start.",
   },
-]
+];
