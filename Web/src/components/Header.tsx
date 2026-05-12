@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const location = useLocation();
   const navItems = [
-    { to: "/", label: "Home" },
-    { to: "/library", label: "Library" },
-    { to: "/favorites", label: "Favorites" },
+    { to: "/", label: "Product" },
+    { to: "/pricing", label: "Pricing" },
+    { to: "/app", label: "Library" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
   ];
@@ -51,10 +51,16 @@ export function Header() {
           </nav>
 
           <Link
-            to="/flow/intent"
+            to="/app"
+            className="hidden text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground hover:text-foreground md:inline-flex"
+          >
+            Sign in
+          </Link>
+          <Link
+            to="/signup?plan=pro"
             className="inline-flex h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-[0_12px_24px_rgba(30,28,24,0.08)] transition-transform hover:-translate-y-0.5"
           >
-            Start
+            Start free trial
           </Link>
         </div>
       </div>
